@@ -288,7 +288,7 @@ while ($row = $result->fetch_assoc()) {
                         </div>
                         <div class="cr-product-price pt-[20px]">
                             <span class="new-price font-Poppins text-[24px] font-semibold leading-[1.167] text-[#64b496] max-[767px]:text-[22px] max-[575px]:text-[20px]"><?php echo $product['discounted_price']; ?> RSD</span>
-                            <span class="old-price font-Poppins text-[16px] line-through leading-[1.75] text-[#7a7a7a]"><?php echo $product['original_price']; ?> RSD</span>
+                            <span class="old-price font-Poppins text-[16px] line-through leading-[1.75] text-[#7a7a7a]"><?php echo $product['price']; ?> RSD</span>
                         </div>
                         <div class="cr-add-card flex pt-[20px]">
                             <div class="cr-qty-main h-full flex relative">
@@ -326,7 +326,7 @@ while ($row = $result->fetch_assoc()) {
                             <div class="tab-delivery-pane" id="description">
                                 <div class="cr-tab-content">
                                     <div class="cr-description pt-[30px]">
-                                        <p class="text-[14px] text-left mb-[0] font-Poppins text-[#7a7a7a] leading-[1.75]">SunShade čuva unutrašnjost vozila od štetnog UV zračenja, štiteći sedišta i instrument tablu od promene boje i pucanja. Istovremeno, smanjuje unutrašnju temperaturu i do 20°C u odnosu na spoljašnju. Nakon korišćenja, jednostavno sklopite SunShade i, kao da je mini kišobran, odložite ga u kasetu ili negde gde će Vam biti na dohvat ruke za ponovnu montažu. Čvrsta metalna konstrukcija i izdržljivo platno čine SunShade izuzetno stabilnim, čineći ga pouzdanijom opcijom od bilo kojih drugih zaštita koje se lako oštećuju ili otpadaju (npr. kao one na vakuum).</p>
+                                        <p class="text-[14px] text-left mb-[0] font-Poppins text-[#7a7a7a] leading-[1.75]"><?php echo $product['description']; ?></p>
                                     </div>
                                     <h4 class="heading mb-[0] pt-[30px] pb-[20px] font-Poppins text-[16px] font-medium leading-[1.5] text-left text-[#2b2b2d] border-b-[1px] border-solid border-[#e9e9e9]">Pakovanje i dostava</h4>
                                     <div class="cr-description pt-[30px]">
