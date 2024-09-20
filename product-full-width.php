@@ -3,7 +3,7 @@
 include('db_connect.php'); 
 
 // Assuming you pass the product ID through a GET parameter
-$productId = isset($_GET['id']) ? intval($_GET['id']) : 2; 
+$productId = isset($_GET['id']) ? intval($_GET['id']) : 3; 
 
 // SQL query to fetch product details and images
 $query = "SELECT proizvodi.*, slike.url_slike 
@@ -228,36 +228,13 @@ while ($row = $result->fetch_assoc()) {
                                 <?php endforeach; ?>
                             </div>
                             <div class="slider slider-nav thumb-image mx-[-6px]">
-                                <div class="thumbnail-image">
-                                    <div class="thumbImg mx-[6px] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] flex justify-center items-center">
-                                        <img src="assets/img/product/sunshade1.png" alt="product-tab-1" class="w-full p-[2px] rounded-[5px]">
+                                <?php foreach ($images as $image_url): ?>
+                                    <div class="thumbnail-image">
+                                        <div class="thumbImg mx-[6px] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] flex justify-center items-center">
+                                            <img src="<?php echo $image_url; ?>" alt="Thumbnail Image" class="w-full p-[2px] rounded-[5px]">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="thumbnail-image">
-                                    <div class="thumbImg mx-[6px] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] flex justify-center items-center">
-                                        <img src="assets/img/product/sunshade2.png" alt="product-tab-2" class="w-full p-[2px] rounded-[5px]">
-                                    </div>
-                                </div>
-                                <div class="thumbnail-image">
-                                    <div class="thumbImg mx-[6px] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] flex justify-center items-center">
-                                        <img src="assets/img/product/sunshade3.png" alt="product-tab-3" class="w-full p-[2px] rounded-[5px]">
-                                    </div>
-                                </div>
-                                <div class="thumbnail-image">
-                                    <div class="thumbImg mx-[6px] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] flex justify-center items-center">
-                                        <img src="assets/img/product/sunshade4.png" alt="product-tab-1" class="w-full p-[2px] rounded-[5px]">
-                                    </div>
-                                </div>
-                                <div class="thumbnail-image">
-                                    <div class="thumbImg mx-[6px] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] flex justify-center items-center">
-                                        <img src="assets/img/product/sunshade5.png" alt="product-tab-2" class="w-full p-[2px] rounded-[5px]">
-                                    </div>
-                                </div>
-                                <div class="thumbnail-image">
-                                    <div class="thumbImg mx-[6px] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] flex justify-center items-center">
-                                        <img src="assets/img/product/sunshade6.png" alt="product-tab-3" class="w-full p-[2px] rounded-[5px]">
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
