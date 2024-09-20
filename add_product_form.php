@@ -32,6 +32,16 @@
                 <input type="file" name="product_images[]" id="product_images" multiple class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
             </div>
 
+            <div class="mb-4">
+                <label for="shortDescription" class="block text-sm font-medium text-gray-700">Short Description</label>
+                <input type="text" id="shortDescription" name="shortDescription" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="discountedPrice" class="block text-sm font-medium text-gray-700">Discounted Price</label>
+                <input type="number" step="0.01" id="discountedPrice" name="discountedPrice" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+            </div>           
+
             <button type="submit" name="submit" class="bg-blue-500 text-white p-2 rounded">Add Product</button>
         </form>
     </div>
