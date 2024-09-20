@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     $sql = $conn->prepare("INSERT INTO proizvodi (naziv, kratki_opis, cena_bez_popusta, cena_sa_popustom, opis) VALUES (?, ?, ?, ?, ?)");
     $sql->bind_param("sdssd", $product_name, $shortDescription, $discountedPrice, $product_price, $product_description);
 
-    if ($conn->query($sql) === TRUE) {
+    if ($sql->execute()) {
         // Get the last inserted product ID
         $product_id = $conn->insert_id;
 
