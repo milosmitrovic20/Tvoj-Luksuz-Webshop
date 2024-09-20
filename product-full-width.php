@@ -1,3 +1,40 @@
+<?php
+// Include database connection file
+include('db_connect.php'); 
+
+// Assuming you pass the product ID through a GET parameter
+$productId = isset($_GET['id']) ? intval($_GET['id']) : 2; 
+
+// SQL query to fetch product details and images
+$query = "SELECT proizvodi.*, slike.url_slike 
+          FROM proizvodi 
+          LEFT JOIN slike ON proizvodi.id_proizvoda = slike.id_proizvoda 
+          WHERE proizvodi.id_proizvoda = ?";
+
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $productId);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$product = [];
+$images = [];
+
+while ($row = $result->fetch_assoc()) {
+    if (empty($product)) {
+        // Store product details once
+        $product = [
+            'title' => $row['naziv'],
+            'price' => $row['cena_sa_popustom'],
+            'discounted_price' => $row['cena_bez_popusta'],
+            'short_description' => $row['kratki_opis'],
+            'description' => $row['opis']
+        ];
+    }
+    // Store each image
+    $images[] = $row['url_slike'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -182,36 +219,13 @@
                     <div class="vehicle-detail-banner banner-content clearfix h-full">
                         <div class="banner-slider sticky top-[30px]">
                             <div class="slider slider-for mb-[15px]">
-                                <div class="slider-banner-image">
-                                    <div class="zoom-image-hover h-full flex items-center text-center border-[1px] border-solid border-[#e9e9e9] bg-[#f7f7f8] rounded-[5px] cursor-pointer">
-                                        <img src="assets/img/product/sunshade1.png" alt="product-tab-1" class="product-image w-full block m-auto">
+                                <?php foreach ($images as $image_url): ?>
+                                    <div class="slider-banner-image">
+                                        <div class="zoom-image-hover h-full flex items-center text-center border-[1px] border-solid border-[#e9e9e9] bg-[#f7f7f8] rounded-[5px] cursor-pointer">
+                                            <img src="<?php echo $image_url; ?>" alt="Product Image" class="product-image w-full block m-auto">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="slider-banner-image">
-                                    <div class="zoom-image-hover h-full flex items-center text-center border-[1px] border-solid border-[#e9e9e9] bg-[#f7f7f8] rounded-[5px] cursor-pointer">
-                                        <img src="assets/img/product/sunshade2.png" alt="product-tab-2" class="product-image w-full block m-auto">
-                                    </div>
-                                </div>
-                                <div class="slider-banner-image">
-                                    <div class="zoom-image-hover h-full flex items-center text-center border-[1px] border-solid border-[#e9e9e9] bg-[#f7f7f8] rounded-[5px] cursor-pointer">
-                                        <img src="assets/img/product/sunshade3.png" alt="product-tab-3" class="product-image w-full block m-auto">
-                                    </div>
-                                </div>
-                                <div class="slider-banner-image">
-                                    <div class="zoom-image-hover h-full flex items-center text-center border-[1px] border-solid border-[#e9e9e9] bg-[#f7f7f8] rounded-[5px] cursor-pointer">
-                                        <img src="assets/img/product/sunshade4.png" alt="product-tab-1" class="product-image w-full block m-auto">
-                                    </div>
-                                </div>
-                                <div class="slider-banner-image">
-                                    <div class="zoom-image-hover h-full flex items-center text-center border-[1px] border-solid border-[#e9e9e9] bg-[#f7f7f8] rounded-[5px] cursor-pointer">
-                                        <img src="assets/img/product/sunshade5.png" alt="product-tab-2" class="product-image w-full block m-auto">
-                                    </div>
-                                </div>
-                                <div class="slider-banner-image">
-                                    <div class="zoom-image-hover h-full flex items-center text-center border-[1px] border-solid border-[#e9e9e9] bg-[#f7f7f8] rounded-[5px] cursor-pointer">
-                                        <img src="assets/img/product/sunshade6.png" alt="product-tab-3" class="product-image w-full block m-auto">
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                             <div class="slider slider-nav thumb-image mx-[-6px]">
                                 <div class="thumbnail-image">
@@ -250,8 +264,8 @@
                 </div>
                 <div class="min-[1400px]:w-[66.66%] min-[1200px]:w-[58.33%] min-[768px]:w-[50%] w-full px-[12px] mb-[24px]">
                     <div class="cr-size-and-weight-contain border-b-[1px] border-solid border-[#e9e9e9] pb-[20px] max-[767px]:mt-[24px]">
-                        <h2 class="heading mb-[15px] block text-[#2b2b2d] text-[22px] leading-[1.5] font-medium max-[1399px]:text-[26px] max-[991px]:text-[20px]">SunShade - Zaštita od sunca za šoferšajbnu</h2>
-                        <p class="mb-[0] text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] ">Nijedna zaštita za šoferšajbnu se ne postavlja brže od našeg SunShade-a, jer se otvara kao kišobran unutar automobila i momentalno prilagođava šoferšajbni</p>
+                        <h2 class="heading mb-[15px] block text-[#2b2b2d] text-[22px] leading-[1.5] font-medium max-[1399px]:text-[26px] max-[991px]:text-[20px]"><?php echo $product['title']; ?></h2>
+                        <p class="mb-[0] text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] "><?php echo $product['short_description']; ?></p>
                     </div>
                     <div class="cr-size-and-weight pt-[20px]">
                         <div class="cr-review-star flex">
@@ -273,8 +287,8 @@
                             </ul>
                         </div>
                         <div class="cr-product-price pt-[20px]">
-                            <span class="new-price font-Poppins text-[24px] font-semibold leading-[1.167] text-[#64b496] max-[767px]:text-[22px] max-[575px]:text-[20px]">1,190 RSD</span>
-                            <span class="old-price font-Poppins text-[16px] line-through leading-[1.75] text-[#7a7a7a]">2,290 RSD</span>
+                            <span class="new-price font-Poppins text-[24px] font-semibold leading-[1.167] text-[#64b496] max-[767px]:text-[22px] max-[575px]:text-[20px]"><?php echo $product['discounted_price']; ?> RSD</span>
+                            <span class="old-price font-Poppins text-[16px] line-through leading-[1.75] text-[#7a7a7a]"><?php echo $product['original_price']; ?> RSD</span>
                         </div>
                         <div class="cr-add-card flex pt-[20px]">
                             <div class="cr-qty-main h-full flex relative">
