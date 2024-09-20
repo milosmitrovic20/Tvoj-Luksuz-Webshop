@@ -24,8 +24,8 @@ while ($row = $result->fetch_assoc()) {
         // Store product details once
         $product = [
             'title' => $row['naziv'],
-            'price' => $row['cena_sa_popustom'],
-            'discounted_price' => $row['cena_bez_popusta'],
+            'price' => $row['cena_bez_popusta'],
+            'discounted_price' => $row['cena_sa_popustom'],
             'short_description' => $row['kratki_opis'],
             'description' => $row['opis']
         ];

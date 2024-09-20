@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
 
     // Prepare and bind the SQL statement
     $sql = $conn->prepare("INSERT INTO proizvodi (naziv, kratki_opis, cena_bez_popusta, cena_sa_popustom, opis) VALUES (?, ?, ?, ?, ?)");
-    $sql->bind_param("ssdds", $product_name, $shortDescription, $discountedPrice, $product_price, $product_description);
+    $sql->bind_param("ssdds", $product_name, $shortDescription, $product_price, $discountedPrice, $product_description);
 
     if ($sql->execute()) {
         // Get the last inserted product ID
