@@ -1,3 +1,16 @@
+<?php
+// Include database connection
+include('db_connect.php');
+
+// Query to get all products
+$query = "SELECT proizvodi.id_proizvoda, proizvodi.naziv, proizvodi.cena_bez_popusta, proizvodi.cena_sa_popustom, slike.url_slike
+          FROM proizvodi
+          LEFT JOIN slike ON proizvodi.id_proizvoda = slike.id_proizvoda
+          GROUP BY proizvodi.id_proizvoda";  // Assuming you want one image per product
+
+$result = $conn->query($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -224,510 +237,42 @@
                         </div>
                     </div>
                     <div class="flex flex-wrap col-50 mb-[-24px]">
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/1.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Vegetables</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-line mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(4.5)</p>
+                        <?php while($row = $result->fetch_assoc()): ?>
+                            <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
+                                <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
+                                    <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
+                                        <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
+                                            <img src="<?php echo $row['url_slike']; ?>" alt="<?php echo $row['naziv']; ?>" class="w-full rounded-[5px]">
                                         </div>
+                                        <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
+                                            <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
+                                                <i class="ri-heart-line text-[18px] leading-[10px]"></i>
+                                            </a>
+                                        </div>
+                                        <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
+                                            <i class="ri-shopping-bag-line text-[#64b496]"></i>
+                                        </a>
                                     </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Fresh organic villa farm lomon
-                                        500gm pack</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$120.25</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$123.25</span>
-                                    </p>
+                                    <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
+                                        <div class="cr-brand">
+                                            <div class="cr-star mb-[12px] flex justify-center items-center">
+                                                <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
+                                                <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
+                                                <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
+                                                <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
+                                                <i class="ri-star-line mx-[1px] text-[15px] text-[#f5885f]"></i>
+                                                <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(4.5)</p>
+                                            </div>
+                                        </div>
+                                        <a href="product-full-width.php?id=<?php echo $row['id_proizvoda']; ?>" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center"><?php echo $row['naziv']; ?></a>
+                                        <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
+                                            <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]"><?php echo $row['cena_sa_popustom']; ?> RSD</span> 
+                                            <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]"><?php echo $row['cena_bez_popusta']; ?> RSD</span>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/9.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Snacks</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Best snakes with hazel nut pack
-                                        200gm</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$145</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$150</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/2.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Fruits</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-line mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(4.5)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Fresh organic apple 1kg simla
-                                        marming</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$120.25</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$123.25</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/3.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Fruits</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-line mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-line mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(3.2)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Organic fresh venila farm
-                                        watermelon 5kg</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$50.30</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$72.60</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/10.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Snacks</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Sweet crunchy nut mix 250gm
-                                        pack</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$120.25</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$123.25</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/17.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Bakery</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Delicious white baked fresh bread
-                                        and toast</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$20</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$22.10</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/13.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Bakery</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Delicious white baked fresh bread
-                                        and toast</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$20</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$22.10</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/11.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Bakery</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Delicious white baked fresh bread
-                                        and toast</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$20</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$22.10</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/12.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Bakery</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Delicious white baked fresh bread
-                                        and toast</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$20</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$22.10</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/1.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Vegetables</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-line mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(4.5)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Fresh organic villa farm lomon
-                                        500gm pack</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$120.25</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$123.25</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/9.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Snacks</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(5.0)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Best snakes with hazel nut pack
-                                        200gm</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$120.25</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$123.25</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
-                            <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
-                                <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
-                                    <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
-                                        <img src="assets/img/product/2.jpg" alt="product-1" class="w-full rounded-[5px]">
-                                    </div>
-                                    <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                        <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                            <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                        <a class="model-oraganic-product h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%] mt-[5px] cursor-pointer cr-modal-toggle">
-                                            <i class="ri-eye-line text-[18px] leading-[10px]"></i>
-                                        </a>
-                                    </div>
-                                    <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                        <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                    </a>
-                                </div>
-                                <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                    <div class="cr-brand">
-                                        <a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out mb-[5px] text-[13px] text-[#777] flex justify-center">Fruits</a>
-                                        <div class="cr-star mb-[12px] flex justify-center items-center">
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <i class="ri-star-line mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                            <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(4.5)</p>
-                                        </div>
-                                    </div>
-                                    <a href="product-left-sidebar.html" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center">Fresh organic apple 1kg simla
-                                        marming</a>
-                                    <p class="text text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] text-left mb-[10px] hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                        eiusmod tempor incididunt
-                                        ut labore lacus vel facilisis.</p>
-                                    <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
-                                        <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]">$120.25</span> 
-                                        <span class="old-price font-Poppins ml-[5px] leading-[1.75] text-[13px] line-through text-[#7a7a7a] max-[1199px]:text-[12px]">$123.25</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endwhile; ?>                             
                     </div>
                     <nav aria-label="..." class="cr-pagination mt-[24px] flex justify-center w-full">
                         <ul class="pagination flex text-[1rem] border-[1px] border-solid border-[#eee] rounded-[10px]">
