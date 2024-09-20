@@ -7,12 +7,12 @@ if (isset($_POST['submit'])) {
     $product_name = $conn->real_escape_string($_POST['product_name']);
     $product_price = $conn->real_escape_string($_POST['product_price']);
     $product_description = $conn->real_escape_string($_POST['product_description']);
-    $shortDescription = $_POST['shortDescription'];
-    $discountedPrice = $_POST['discountedPrice'];
+    $shortDescription = $conn->real_escape_string($_POST['shortDescription']);
+    $discountedPrice = $conn->real_escape_string($_POST['discountedPrice']);
 
     // Prepare and bind the SQL statement
     $sql = $conn->prepare("INSERT INTO proizvodi (naziv, kratki_opis, cena_bez_popusta, cena_sa_popustom, opis) VALUES (?, ?, ?, ?, ?)");
-    $sql->bind_param("sdssd", $product_name, $shortDescription, $discountedPrice, $product_price, $product_description);
+    $sql->bind_param("ssdds", $product_name, $shortDescription, $discountedPrice, $product_price, $product_description);
 
     if ($sql->execute()) {
         // Get the last inserted product ID
