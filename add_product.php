@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $product_description = $conn->real_escape_string($_POST['product_description']);
 
     // Insert product into products table
-    $sql = "INSERT INTO products (name, price, description) VALUES ('$product_name', '$product_price', '$product_description')";
+    $sql = "INSERT INTO proizvodi (naziv, cena_bez_popusta, opis) VALUES ('$product_name', '$product_price', '$product_description')";
 
     if ($conn->query($sql) === TRUE) {
         // Get the last inserted product ID
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
             // Move uploaded file to the target directory
             if (move_uploaded_file($image_tmp_name, $target_file)) {
                 // Insert image data into product_images table
-                $sql_image = "INSERT INTO product_images (product_id, image_url) VALUES ('$product_id', '$target_file')";
+                $sql_image = "INSERT INTO slike (id_proizvoda, url_slike) VALUES ('$product_id', '$target_file')";
                 $conn->query($sql_image);
             }
         }
