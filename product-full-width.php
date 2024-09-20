@@ -3,7 +3,7 @@
 include('db_connect.php'); 
 
 // Assuming you pass the product ID through a GET parameter
-$productId = isset($_GET['id']) ? intval($_GET['id']) : 3; 
+$productId = isset($_GET['id']) ? intval($_GET['id']) : 4; 
 
 // SQL query to fetch product details and images
 $query = "SELECT proizvodi.*, slike.url_slike 
