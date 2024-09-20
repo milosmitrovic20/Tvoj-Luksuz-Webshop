@@ -14,11 +14,8 @@ $sql = "SELECT COUNT(*) AS total_products FROM proizvodi";
 $res = $conn->query($sql);
 
 // Fetch the result
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    echo "Total Products: " . $row['total_products'];
-} else {
-    echo "No products found.";
+if ($res->num_rows > 0) {
+    $row = $res->fetch_assoc();
 }
 ?>
 
@@ -30,9 +27,9 @@ if ($result->num_rows > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="ecommerce, market, shop, mart, cart, deal, multipurpose, marketplace">
-    <meta name="description" content="Carrot - Multipurpose eCommerce Tailwind CSS Template.">
-    <meta name="author" content="ashishmaraviya">
-    <title>Carrot - Multipurpose eCommerce Tailwind CSS Template</title>
+    <meta name="description" content="Svi proizvodi - Tvoj luksuz">
+    <meta name="author" content="milosmitrovic20">
+    <title>Svi proizvodi - Tvoj luksuz</title>
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/img/logo/favicon.png">
