@@ -9,6 +9,17 @@ $query = "SELECT proizvodi.id_proizvoda, proizvodi.naziv, proizvodi.cena_bez_pop
           GROUP BY proizvodi.id_proizvoda";  // Assuming you want one image per product
 
 $result = $conn->query($query);
+
+$sql = "SELECT COUNT(*) AS total_products FROM proizvodi";
+$res = $conn->query($sql);
+
+// Fetch the result
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    echo "Total Products: " . $row['total_products'];
+} else {
+    echo "No products found.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -190,28 +201,12 @@ $result = $conn->query($query);
     <!-- Shop -->
     <section class="section-shop py-[100px] max-[1199px]:py-[70px]">
         <div class="flex flex-wrap justify-between relative items-center mx-auto min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
-            <div class="flex flex-wrap hidden">
-                <div class="w-full px-[12px]">
-                    <div class="mb-[30px]" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-                        <div class="cr-banner mb-[15px] text-center">
-                            <h2 class="font-Manrope text-[32px] font-bold leading-[1.2] text-[#2b2b2d] max-[1199px]:text-[28px] max-[991px]:text-[25px] max-[767px]:text-[22px]">Categories</h2>
-                        </div>
-                        <div class="cr-banner-sub-title w-full">
-                            <p class="max-w-[600px] m-auto font-Poppins text-[14px] text-[#212529] leading-[22px] text-center max-[1199px]:w-[80%] max-[991px]:w-full font-Poppins text-[#7a7a7a]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore lacus vel facilisis. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="flex flex-wrap w-full">
                 <div class="w-full" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
                     <div class="flex flex-wrap w-full">
                         <div class="w-full px-[12px]">
                             <div class="cr-shop-bredekamp mb-[30px] flex flex-wrap items-center bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[5px]">
                                 <div class="cr-toggle m-[5px] flex">
-                                    <a href="javascript:void(0)" class="shop_side_view h-[35px] w-[35px] flex justify-center items-center mr-[7px] bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] max-[360px]:mr-[7px]">
-                                        <i class="ri-filter-line text-[20px]"></i>
-                                    </a>
                                     <a href="javascript:void(0)" class="gridCol h-[35px] w-[35px] flex justify-center items-center mr-[7px] bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] max-[360px]:mr-[7px] active-grid">
                                         <i class="ri-grid-line text-[20px]"></i>
                                     </a>
@@ -220,18 +215,7 @@ $result = $conn->query($query);
                                     </a>
                                 </div>
                                 <div class="center-content flex justify-start items-center flex-[1]">
-                                    <span class="px-[12px] font-Poppins text-[14px] leading-[1.875] text-[#7a7a7a] max-[767px]:hidden">We found 29 items for you!</span>
-                                </div>
-                                <div class="cr-select h-[35px] m-[5px] pt-[3px] pr-[0] pb-[3px] pl-[15px] bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] flex max-[360px]:pl-[10px]">
-                                    <label class="font-Poppins text-[15px] leading-[1.7] text-[#7a7a7a] inline-block max-[767px]:leading-[2.2] max-[767px]:text-[12px]">Sort By :</label>
-                                    <select class="form-select py-[0px] px-[6px] mr-[10px] tracking-[0] font-Poppins text-[15px] bg-[10px] leading-[1.2] text-[#7a7a7a] w-[auto] border-[0] outline-[0] block cursor-pointer max-[767px]:text-[12px]" aria-label="Default select example">
-                                        <option selected>Featured</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                        <option value="4">Four</option>
-                                        <option value="5">Five</option>
-                                    </select>
+                                    <span class="px-[12px] font-Poppins text-[14px] leading-[1.875] text-[#7a7a7a] max-[767px]:hidden">Pronašli smo <?php echo $row['total_products']; ?> proizvoda za tebe!</span>
                                 </div>
                             </div>
                         </div>
@@ -277,14 +261,14 @@ $result = $conn->query($query);
                     <nav aria-label="..." class="cr-pagination mt-[24px] flex justify-center w-full">
                         <ul class="pagination flex text-[1rem] border-[1px] border-solid border-[#eee] rounded-[10px]">
                             <li class="page-item disabled px-[0.75rem] py-[0.375rem] bg-[#f7f7f8] rounded-l-[10px] border-r-[1px] border-solid border-[#eee] hover:bg-[#f7f7f8]">
-                                <span class="page-link">Previous</span>
+                                <span class="page-link">Prethodna</span>
                             </li>
                             <li class="page-item px-[0.75rem] py-[0.375rem] border-r-[1px] border-solid border-[#eee] hover:bg-[#f7f7f8] active" aria-current="page">
                                 <span class="page-link">1</span>
                             </li>
                             <li class="page-item px-[0.75rem] py-[0.375rem] border-r-[1px] border-solid border-[#eee] hover:bg-[#f7f7f8]"><a class="page-link" href="#">2</a></li>
                             <li class="page-item px-[0.75rem] py-[0.375rem] border-r-[1px] border-solid border-[#eee] hover:bg-[#f7f7f8]"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item px-[0.75rem] py-[0.375rem] rounded-r-[10px] hover:bg-[#f7f7f8]"><a class="page-link" href="#">Next</a></li>
+                            <li class="page-item px-[0.75rem] py-[0.375rem] rounded-r-[10px] hover:bg-[#f7f7f8]"><a class="page-link" href="#">Sledeća</a></li>
                         </ul>
                     </nav>
                 </div>
