@@ -130,7 +130,7 @@ if ($res->num_rows > 0) {
                             <a href="wishlist.html" class="cr-right-bar-item transition-all duration-[0.3s] ease-in-out mr-[16px] max-[991px]:mr-[20px]">
                                 <i class="ri-heart-line text-[20px]"></i>
                             </a>
-                            <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle transition-all duration-[0.3s] ease-in-out mr-[16px] max-[991px]:m-[0]">
+                            <a href="cart.html" class="cr-right-bar-item Shopping-toggle transition-all duration-[0.3s] ease-in-out mr-[16px] max-[991px]:m-[0]">
                                 <i class="ri-shopping-cart-line text-[20px]"></i>
                             </a>
                         </div>
@@ -196,7 +196,7 @@ if ($res->num_rows > 0) {
     </div>
 
     <!-- Shop -->
-    <section class="section-shop py-[100px] max-[1199px]:py-[70px]">
+    <section class="section-shop py-[50px] max-[1199px]:py-[20px]">
         <div class="flex flex-wrap justify-between relative items-center mx-auto min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
             <div class="flex flex-wrap w-full">
                 <div class="w-full" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="600">
