@@ -16,7 +16,10 @@ const calculateTotalPrice = () => {
     const totalPriceWithShippingElement = document.querySelector('.cr-checkout-summary-total span.text-right');
 
     // Display the total price in the specified element
-    totalPriceWithShippingElement.textContent = `${totalPrice + 300} RSD`;
+    totalPriceWithShippingElement.textContent = `${totalPrice > 4500 ? totalPrice : totalPrice + 300} RSD`;
+
+    const deliveryPriceElement = document.querySelector('.cr-checkout-summary .delivery-price');
+    totalPriceElement.textContent = `${totalPrice > 4500 ? "Besplatno": 300 + " RSD"}`;
 };
 
 // Call the function to update the total price
@@ -62,3 +65,45 @@ const displayCartItems = () => {
 
 // Call the function to display cart items
 displayCartItems();
+
+document.getElementById('checkout-form').addEventListener('submit', async (event) => {
+    event.preventDefault();  // Prevent the form from submitting normally
+
+    // Collect form data
+    const formData = new FormData(event.target);
+
+    // Convert form data to an object
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    // Convert cart items (from localStorage) into an array
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Add cart items to the data object
+    data.cartItems = cartItems;
+
+    // Send data to the server via fetch
+    try {
+        const response = await fetch('submit_order.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            document.getElementById('success-message').style.display = 'block';
+            // Clear the cart from localStorage after successful submission
+            localStorage.removeItem('cart');
+        } else {
+            console.error(result.error);
+        }
+    } catch (error) {
+        console.error('Error sending the order:', error);
+    }
+});
