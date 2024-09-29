@@ -1,3 +1,23 @@
+// Function to calculate the total cart price
+const calculateTotalPrice = () => { 
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalPrice = 0;
+
+    // Sum up the subtotals of all products in the cart
+    cartItems.forEach(item => {
+        totalPrice += item.price * item.quantity;
+    });
+
+    // Select the container where you want to display the total price
+    const totalPriceElement = document.querySelector('.cr-checkout-summary-total span.text-right');
+
+    // Display the total price in the specified element
+    totalPriceElement.textContent = `${totalPrice} RSD`;
+};
+
+// Call the function to update the total price
+calculateTotalPrice();
+
 // Function to display products in the cart
 const displayCartItems = () => {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -25,7 +45,7 @@ const displayCartItems = () => {
                         <p class="cr-price font-Poppins text-[16px] leading-[1.75] text-[#7a7a7a] text-left max-[1199px]:text-[14px]">
                             <span class="new-price text-[#64b496] font-bold">${item.price} RSD</span>
                         </p>
-                        <p class="quantity text-[14px] text-[#555]">Quantity: ${item.quantity}</p>
+                        <p class="quantity text-[14px] text-[#555]">Količina: ${item.quantity}</p>
                     </div>
                 </div>
             </div>
