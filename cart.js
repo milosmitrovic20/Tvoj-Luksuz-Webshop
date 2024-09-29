@@ -1,3 +1,17 @@
+// Function to remove a product from the cart
+const removeFromCart = (productId) => {
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart from localStorage
+
+    // Filter out the product with the given ID
+    cartItems = cartItems.filter(item => item.id !== productId);
+
+    // Update localStorage with the new cart array
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
+    // Re-render the cart
+    displayCartProducts();
+};
+
 // Function to update the quantity of a product in the cart
 const updateCartQuantity = (productId, newQuantity) => {
     let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
