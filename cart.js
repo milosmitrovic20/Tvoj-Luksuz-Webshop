@@ -13,7 +13,7 @@ const addToCart = (productId, productName, productPrice, productImage, productQu
     
     if (existingProduct) {
         // Increase the quantity if product is already in the cart
-        existingProduct.quantity += 1;
+        existingProduct.quantity += productQuantity;
     } else {
         // Add new product to the cart
         const newProduct = {
