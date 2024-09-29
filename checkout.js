@@ -19,7 +19,7 @@ const calculateTotalPrice = () => {
     totalPriceWithShippingElement.textContent = `${totalPrice > 4500 ? totalPrice : totalPrice + 300} RSD`;
 
     const deliveryPriceElement = document.querySelector('.cr-checkout-summary .delivery-price');
-    totalPriceElement.textContent = `${totalPrice > 4500 ? "Besplatno": 300 + " RSD"}`;
+    deliveryPriceElement.textContent = `${totalPrice > 4500 ? "Besplatno": 300 + " RSD"}`;
 };
 
 // Call the function to update the total price
