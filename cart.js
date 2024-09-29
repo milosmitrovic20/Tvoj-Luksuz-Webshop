@@ -46,7 +46,7 @@ const initAddToCartButtons = () => {
             const productName = button.dataset.name;
             const productPrice = button.dataset.price;
             const productImage = button.dataset.image;
-            const quantityInput = document.querySelector(`quantity`);
+            const quantityInput = document.querySelector(`.quantity`);
             const productQuantity = parseInt(quantityInput.value); // Get quantity from input
 
             // Ensure valid quantity
