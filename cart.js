@@ -1,9 +1,14 @@
-// Function to remove a product from the cart
-const removeFromCart = (productId) => {
-    let cartItems = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart from localStorage
+// Function to update the quantity of a product in the cart
+const updateCartQuantity = (productId, newQuantity) => {
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Filter out the product with the given ID
-    cartItems = cartItems.filter(item => item.id !== productId);
+    // Find the product and update its quantity
+    cartItems = cartItems.map(item => {
+        if (item.id === productId) {
+            item.quantity = newQuantity;
+        }
+        return item;
+    });
 
     // Update localStorage with the new cart array
     localStorage.setItem('cart', JSON.stringify(cartItems));
@@ -12,22 +17,74 @@ const removeFromCart = (productId) => {
     displayCartProducts();
 };
 
-// Event listener for remove buttons
-const setupRemoveButtons = () => {
-    const removeButtons = document.querySelectorAll('.cr-cart-remove a'); // Select all remove buttons
+// Function to calculate the total cart price
+const calculateTotalPrice = () => {
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalPrice = 0;
 
-    // Add event listeners to each remove button
-    removeButtons.forEach(button => {
+    // Sum up the subtotals of all products in the cart
+    cartItems.forEach(item => {
+        totalPrice += item.price * item.quantity;
+    });
+
+    // Display the total price (assuming you have an element for total price)
+    document.querySelector('#total-price').textContent = `${totalPrice} RSD`;
+};
+
+// Event listener for updating quantity via input or buttons
+const setupQuantityHandlers = () => {
+    const plusButtons = document.querySelectorAll('.plus');
+    const minusButtons = document.querySelectorAll('.minus');
+    const quantityInputs = document.querySelectorAll('.quantity');
+
+    // Handle clicking the "+" button
+    plusButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const productId = button.getAttribute('data-id'); // Get the product ID from data-id
-            removeFromCart(productId); // Call removeFromCart with the product ID
+            const productId = button.getAttribute('data-id');
+            const quantityInput = button.nextElementSibling; // The input next to the "+" button
+            let newQuantity = parseInt(quantityInput.value) + 1;
+            
+            // Update the quantity in the input and in localStorage
+            quantityInput.value = newQuantity;
+            updateCartQuantity(productId, newQuantity);
+        });
+    });
+
+    // Handle clicking the "-" button
+    minusButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productId = button.getAttribute('data-id');
+            const quantityInput = button.previousElementSibling; // The input next to the "-" button
+            let newQuantity = parseInt(quantityInput.value) - 1;
+            
+            // Ensure the quantity is at least 1
+            if (newQuantity < 1) newQuantity = 1;
+
+            // Update the quantity in the input and in localStorage
+            quantityInput.value = newQuantity;
+            updateCartQuantity(productId, newQuantity);
+        });
+    });
+
+    // Handle typing in the quantity input
+    quantityInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            const productId = input.closest('tr').querySelector('.plus').getAttribute('data-id');
+            let newQuantity = parseInt(input.value);
+
+            // Ensure the quantity is at least 1
+            if (isNaN(newQuantity) || newQuantity < 1) newQuantity = 1;
+            input.value = newQuantity;
+
+            // Update the quantity in localStorage
+            updateCartQuantity(productId, newQuantity);
         });
     });
 };
 
-// Function to display products in the cart (same as before but adding the setupRemoveButtons call)
+// Function to display products in the cart (with quantity handlers setup)
 const displayCartProducts = () => {
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     const cartTableBody = document.querySelector('#cart-table-body'); // Assuming there's a <tbody> with this ID
 
     // Clear the current contents of the cart
@@ -66,8 +123,11 @@ const displayCartProducts = () => {
         cartTableBody.insertAdjacentHTML('beforeend', productHTML);
     });
 
-    // Setup remove button functionality after rendering
-    setupRemoveButtons();
+    // Setup quantity handlers for the inputs and buttons
+    setupQuantityHandlers();
+
+    // Calculate and display the total price
+    calculateTotalPrice();
 };
 
 // Call the function to display the cart products
