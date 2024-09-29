@@ -274,7 +274,7 @@ while ($row = $result->fetch_assoc()) {
                                 <button type="button" class="minus w-[18px] h-[18px] p-[0] bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] leading-[0] absolute bottom-[0] right-[0]">-</button>
                             </div>
                             <div class="cr-add-button ml-[15px] max-[380px]:hidden">
-                                <button type="button" class="cr-button cr-shopping-bag h-[40px] font-bold transition-all duration-[0.3s] ease-in-out py-[8px] px-[22px] text-[14px] font-Manrope leading-[1.2] bg-[#64b496] text-[#fff] border-[1px] border-solid border-[#64b496] rounded-[5px] flex items-center justify-center hover:bg-[#000] hover:border-[#000] max-[1199px]:py-[8px] max-[1199px]:px-[15px]">Dodaj u korpu</button>
+                                <button type="button" data-id="<?php echo $productId; ?>" data-name="<?php echo $product['title']; ?>" data-price="<?php echo $product['discounted_price']; ?>" data-image="<?php echo $images[0]; ?>" class="add-to-cart cr-button cr-shopping-bag h-[40px] font-bold transition-all duration-[0.3s] ease-in-out py-[8px] px-[22px] text-[14px] font-Manrope leading-[1.2] bg-[#64b496] text-[#fff] border-[1px] border-solid border-[#64b496] rounded-[5px] flex items-center justify-center hover:bg-[#000] hover:border-[#000] max-[1199px]:py-[8px] max-[1199px]:px-[15px]">Dodaj u korpu</button>
                             </div>
                             <div class="cr-card-icon flex ml-[15px]">
                                 <a href="javascript:void(0)" class="wishlist m-[0] p-[0] bg-transparent">
@@ -857,6 +857,7 @@ while ($row = $result->fetch_assoc()) {
     <!-- Main Custom -->
     <script src="assets/js/main.js"></script>
 
+    <script src="cart.js"></script>
 </body>
 
 </html>
