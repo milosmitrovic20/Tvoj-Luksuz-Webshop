@@ -12,6 +12,19 @@ const removeFromCart = (productId) => {
     displayCartProducts();
 };
 
+// Event listener for remove buttons
+const setupRemoveButtons = () => {
+    const removeButtons = document.querySelectorAll('.cr-cart-remove a'); // Select all remove buttons
+
+    // Add event listeners to each remove button
+    removeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const productId = button.getAttribute('data-id'); // Get the product ID from data-id
+            removeFromCart(productId); // Call removeFromCart with the product ID
+        });
+    });
+};
+
 // Function to update the quantity of a product in the cart
 const updateCartQuantity = (productId, newQuantity) => {
     let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
