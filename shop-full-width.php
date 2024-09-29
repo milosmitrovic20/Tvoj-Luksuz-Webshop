@@ -130,7 +130,7 @@ if ($res->num_rows > 0) {
                             <a href="wishlist.html" class="cr-right-bar-item transition-all duration-[0.3s] ease-in-out mr-[16px] max-[991px]:mr-[20px]">
                                 <i class="ri-heart-line text-[20px]"></i>
                             </a>
-                            <a href="cart.html" class="cr-right-bar-item Shopping-toggle transition-all duration-[0.3s] ease-in-out mr-[16px] max-[991px]:m-[0]">
+                            <a href="cart.html" class="cr-right-bar-item transition-all duration-[0.3s] ease-in-out mr-[16px] max-[991px]:m-[0]">
                                 <i class="ri-shopping-cart-line text-[20px]"></i>
                             </a>
                         </div>
