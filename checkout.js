@@ -23,7 +23,7 @@ const displayCartItems = () => {
                             <a href="product-left-sidebar.html" class="text-[15px] text-[#000] font-medium leading-[1.2]">${item.name}</a>
                         </h5>
                         <p class="cr-price font-Poppins text-[16px] leading-[1.75] text-[#7a7a7a] text-left max-[1199px]:text-[14px]">
-                            <span class="new-price text-[#64b496] font-bold">$${item.price.toFixed(2)}</span>
+                            <span class="new-price text-[#64b496] font-bold">${item.price} RSD</span>
                         </p>
                         <p class="quantity text-[14px] text-[#555]">Quantity: ${item.quantity}</p>
                     </div>
