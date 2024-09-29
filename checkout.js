@@ -1,7 +1,7 @@
 // Function to display products in the cart
 const displayCartItems = () => {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartContainer = document.querySelector('#cr-checkout-pro'); // Assuming this is your container
+    const cartContainer = document.querySelector('.cr-checkout-pro'); // Assuming this is your container
 
     // Clear the current contents of the cart
     cartContainer.innerHTML = '';
