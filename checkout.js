@@ -66,7 +66,7 @@ const displayCartItems = () => {
 // Call the function to display cart items
 displayCartItems();
 
-document.getElementById('checkout-form').addEventListener('submit', async (event) => {
+document.getElementById('.cr-check-order-btn').addEventListener('click', async (event) => {
     event.preventDefault();  // Prevent the form from submitting normally
 
     // Collect form data
