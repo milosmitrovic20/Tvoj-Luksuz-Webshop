@@ -150,6 +150,9 @@ const displayCartProducts = () => {
         cartTableBody.insertAdjacentHTML('beforeend', productHTML);
     });
 
+    // Setup remove button functionality after rendering
+    setupRemoveButtons();
+
     // Setup quantity handlers for the inputs and buttons
     setupQuantityHandlers();
 
