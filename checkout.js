@@ -69,8 +69,11 @@ displayCartItems();
 document.querySelector('.cr-check-order-btn').addEventListener('click', async (event) => {
     event.preventDefault();  // Prevent the form from submitting normally
 
+    // Get the form element
+    const form = document.getElementById('checkout-form'); // Use the correct form ID
+
     // Collect form data
-    const formData = new FormData(event.target);
+    const formData = new FormData(form); // Pass the form element here
 
     // Convert form data to an object
     const data = {};
