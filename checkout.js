@@ -87,6 +87,8 @@ document.querySelector('.cr-check-order-btn').addEventListener('click', async (e
     // Add cart items to the data object
     data.cartItems = cartItems;
 
+    console.log(data.cartItems)
+
     // Send data to the server via fetch
     try {
         const response = await fetch('submit_order.php', {
