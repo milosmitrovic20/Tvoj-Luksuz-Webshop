@@ -65,7 +65,7 @@
                                 <i class="ri-heart-3-line pr-[5px] text-[21px] leading-[17px]"></i>
                                 <span class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[15px] leading-[15px] font-medium text-[#000]">Omiljeno</span>
                             </a>
-                            <a href="javascript:void(0)" class="cr-right-bar-item Shopping-toggle transition-all duration-[0.3s] ease-in-out flex items-center">
+                            <a href="" class="cr-right-bar-item Shopping-toggle transition-all duration-[0.3s] ease-in-out flex items-center">
                                 <i class="ri-shopping-bag-line pr-[5px] text-[21px] leading-[17px]"></i>
                                 <span class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[15px] leading-[15px] font-medium text-[#000]">Korpa</span>
                             </a>
@@ -365,98 +365,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cart -->
-    <div class="cr-cart-overlay w-full h-screen hidden fixed z-[10] top-[0] left-[0] bg-[#000000b3]"></div>
-    <div class="cr-cart-view h-full fixed top-[0] right-[-350px] z-[20] transition-all duration-[0.4s] ease text-[#000]">
-        <div class="cr-cart-inner w-[350px] h-full m-[0] px-[20px] bg-[#fff] relative z-[9] flex flex-col justify-between max-[575px]:w-[300px] max-[360px]:w-[280px]">
-            <div class="cr-cart-top">
-                <div class="cr-cart-title mb-[15px] py-[15px] flex flex-row justify-between items-center border-b-[1px] border-solid border-[#e9e9e9]">
-                    <h6 class="m-[0] text-[17px] font-bold text-[#2b2b2d] leading-[1.2]">My Cart</h6>
-                    <button type="button" class="close-cart text-[#fb5555] text-[20px] font-extrabold bg-none border-[0]">×</button>
-                </div>
-                <ul class="crcart-pro-items">
-                    <li class="mb-[20px] pb-[20px] flex overflow-hidden border-b-[1px] border-solid border-[#e9e9e9]">
-                        <a href="product-left-sidebar.html" class="crside_pro_img m-auto grow-[1] basis-[20%]">
-                            <img src="assets/img/product/4.jpg" alt="product-1" class="max-w-full rounded-[5px]">
-                        </a>
-                        <div class="cr-pro-content pl-[15px] relative grow-[1] basis-[70%] overflow-hidden">
-                            <a href="product-left-sidebar.html" class="cart_pro_title w-full pr-[30px] whitespace-normal overflow-hidden text-ellipsis block text-[15px] leading-[18px] font-normal">Fresh Pomegranate</a>
-                            <span class="cart-price mt-[5px] text-[14px] block"><span class="text-[#777] font-bold text-[16px]">$56.00</span> x 1kg</span>
-                            <div class="cr-cart-qty mt-[5px]">
-                                <div class="cart-qty-plus-minus m-[0] w-[80px] h-[30px] relative overflow-hidden flex bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] items-center justify-between">
-                                    <button type="button" class="plus h-[25px] w-[25px] mt-[-2px] border-[0] bg-transparent flex justify-center items-center">+</button>
-                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20" class="quantity w-[30px] m-[0] p-[0] text-[#444] float-left text-[14px] font-semibold leading-[38px] h-auto text-center outline-[0]">
-                                    <button type="button" class="minus h-[25px] w-[25px] mt-[-2px] border-[0] bg-transparent flex justify-center items-center">-</button>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0)" class="remove py-[0] px-[9px] absolute top-[0] right-[0] text-[17px] leading-[15px] bg-[#fff] text-[#fb5555]">×</a>
-                        </div>
-                    </li>
-                    <li class="mb-[20px] pb-[20px] flex overflow-hidden border-b-[1px] border-solid border-[#e9e9e9]">
-                        <a href="product-left-sidebar.html" class="crside_pro_img m-auto grow-[1] basis-[20%]">
-                            <img src="assets/img/product/2.jpg" alt="product-2" class="max-w-full rounded-[5px]">
-                        </a>
-                        <div class="cr-pro-content pl-[15px] relative grow-[1] basis-[70%] overflow-hidden">
-                            <a href="product-left-sidebar.html" class="cart_pro_title w-full pr-[30px] whitespace-normal overflow-hidden text-ellipsis block text-[15px] leading-[18px] font-normal">Green Apples</a>
-                            <span class="cart-price mt-[5px] text-[14px] block"><span class="text-[#777] font-bold text-[16px]">$75.00</span> x 1kg</span>
-                            <div class="cr-cart-qty mt-[5px]">
-                                <div class="cart-qty-plus-minus m-[0] w-[80px] h-[30px] relative overflow-hidden flex bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] items-center justify-between">
-                                    <button type="button" class="plus h-[25px] w-[25px] mt-[-2px] border-[0] bg-transparent flex justify-center items-center">+</button>
-                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                        class="quantity w-[30px] m-[0] p-[0] text-[#444] float-left text-[14px] font-semibold leading-[38px] h-auto text-center outline-[0]">
-                                    <button type="button" class="minus h-[25px] w-[25px] mt-[-2px] border-[0] bg-transparent flex justify-center items-center">-</button>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0)" class="remove py-[0] px-[9px] absolute top-[0] right-[0] text-[17px] leading-[15px] bg-[#fff] text-[#fb5555]">×</a>
-                        </div>
-                    </li>
-                    <li class="mb-[20px] pb-[20px] flex overflow-hidden border-b-[1px] border-solid border-[#e9e9e9]">
-                        <a href="product-left-sidebar.html" class="crside_pro_img m-auto grow-[1] basis-[20%]">
-                            <img src="assets/img/product/3.jpg" alt="product-3" class="max-w-full rounded-[5px]">
-                        </a>
-                        <div class="cr-pro-content pl-[15px] relative grow-[1] basis-[70%] overflow-hidden">
-                            <a href="product-left-sidebar.html" class="cart_pro_title w-full pr-[30px] whitespace-normal overflow-hidden text-ellipsis block text-[15px] leading-[18px] font-normal">Watermelon - Small</a>
-                            <span class="cart-price mt-[5px] text-[14px] block"><span class="text-[#777] font-bold text-[16px]">$48.00</span> x 5kg</span>
-                            <div class="cr-cart-qty mt-[5px]">
-                                <div class="cart-qty-plus-minus m-[0] w-[80px] h-[30px] relative overflow-hidden flex bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] items-center justify-between">
-                                    <button type="button" class="plus h-[25px] w-[25px] mt-[-2px] border-[0] bg-transparent flex justify-center items-center">+</button>
-                                    <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                        class="quantity w-[30px] m-[0] p-[0] text-[#444] float-left text-[14px] font-semibold leading-[38px] h-auto text-center outline-[0]">
-                                    <button type="button" class="minus h-[25px] w-[25px] mt-[-2px] border-[0] bg-transparent flex justify-center items-center">-</button>
-                                </div>
-                            </div>
-                            <a href="javascript:void(0)" class="remove py-[0] px-[9px] absolute top-[0] right-[0] text-[17px] leading-[15px] bg-[#fff] text-[#fb5555]">×</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="cr-cart-bottom relative top-[-20px]">
-                <div class="cart-sub-total mt-[20px] mb-[10px] pt-[0] pb-[8px] flex flex-wrap justify-between border-t-[1px] border-solid border-[#e9e9e9]">
-                    <table class="table cart-table mt-[10px] w-full">
-                        <tbody>
-                            <tr>
-                                <td class="text-left text-[16px] text-[#000] font-normal py-[7px]">Sub-Total :</td>
-                                <td class="text-right text-[15px] text-[#000] font-bold py-[7px]">$300.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left text-[16px] text-[#000] font-normal py-[7px]">VAT (20%) :</td>
-                                <td class="text-right text-[15px] text-[#000] font-bold py-[7px]">$60.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left text-[16px] text-[#000] font-normal py-[7px]">Total :</td>
-                                <td class="text-right text-[15px] text-[#000] font-bold py-[7px]">$360.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="cart_btn flex justify-between">
-                    <a href="cart.html" class="cr-button h-[40px] font-bold transition-all duration-[0.3s] ease-in-out py-[8px] px-[22px] text-[14px] font-Manrope capitalize leading-[1.2] bg-[#64b496] text-[#fff] border-[1px] border-solid border-[#64b496] rounded-[5px] flex items-center justify-center hover:bg-[#000] hover:border-[#000]">View Cart</a>
-                    <a href="checkout.html" class="cr-btn-secondary h-[40px] font-bold transition-all duration-[0.3s] ease-in-out py-[8px] px-[22px] text-[14px] font-Manrope capitalize leading-[1.2] bg-[#fff] text-[#64b496] border-[1px] border-solid border-[#64b496] rounded-[5px] flex items-center justify-center hover:text-[#fff] hover:bg-[#64b496] hover:border-[#64b496]">Checkout</a>
                 </div>
             </div>
         </div>
