@@ -75,6 +75,8 @@ document.querySelector('.cr-check-order-btn').addEventListener('click', async (e
     // Collect form data
     const formData = new FormData(form); // Pass the form element here
 
+    console.log(formData);
+
     // Convert form data to an object
     const data = {};
     formData.forEach((value, key) => {
