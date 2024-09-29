@@ -4,13 +4,6 @@ include 'db_connect.php'; // Use the existing connection from db_connect.php
 
 // Get the POST data from the request
 $data = json_decode(file_get_contents("php://input"), true);
-echo $data;
-
-// Check if required fields are present
-if (!isset($data['ime'], $data['prezime'], $data['adresa'], $data['grad'], $data['postanski_broj'], $data['broj_telefona'], $data['cartItems'])) {
-    echo json_encode(['success' => false, 'error' => 'Nedostaju potrebni podaci']);
-    exit;
-}
 
 try {
     // Begin transaction

@@ -75,13 +75,10 @@ document.querySelector('.cr-check-order-btn').addEventListener('click', async (e
     // Collect form data
     const formData = new FormData(form); // Pass the form element here
 
-    console.log(formData);
-
     // Convert form data to an object
     const data = {};
     formData.forEach((value, key) => {
         data[key] = value;
-        console.log(data[key]);
     });
 
     // Convert cart items (from localStorage) into an array
@@ -89,8 +86,6 @@ document.querySelector('.cr-check-order-btn').addEventListener('click', async (e
 
     // Add cart items to the data object
     data.cartItems = cartItems;
-
-    console.log(data.cartItems)
 
     // Send data to the server via fetch
     try {
