@@ -3,6 +3,9 @@ const displayCartProducts = () => {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart from localStorage
     const cartTableBody = document.querySelector('#cart-table-body'); // Assuming there's a <tbody> with this ID
 
+    // Clear the current contents of the cart
+    cartTableBody.innerHTML = '';
+
     // Loop through the cart items and generate HTML for each
     cartItems.forEach((item) => {
         const productHTML = `
