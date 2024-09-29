@@ -1,69 +1,44 @@
-// Helper function to get cart from localStorage
-const getCart = () => JSON.parse(localStorage.getItem('cart')) || [];
+// Function to display products in the cart
+const displayCartProducts = () => {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart from localStorage
+    const cartTableBody = document.querySelector('#cart-table-body'); // Assuming there's a <tbody> with this ID
 
-// Helper function to save cart to localStorage
-const saveCart = (cart) => localStorage.setItem('cart', JSON.stringify(cart));
+    // Clear the current contents of the cart
+    cartTableBody.innerHTML = '';
 
-// Function to add a product to the cart
-const addToCart = (productId, productName, productPrice, productImage, productQuantity) => {
-    let cart = getCart();
-    
-    // Check if product is already in the cart
-    const existingProduct = cart.find(item => item.id === productId);
-    
-    if (existingProduct) {
-        // Increase the quantity if product is already in the cart
-        existingProduct.quantity += productQuantity;
-    } else {
-        // Add new product to the cart
-        const newProduct = {
-            id: productId,
-            name: productName,
-            price: productPrice,
-            image: productImage,
-            quantity: productQuantity
-        };
-        cart.push(newProduct);
-    }
+    // Loop through the cart items and generate HTML for each
+    cartItems.forEach((item) => {
+        const productHTML = `
+            <tr class="border-b-[1px] border-solid border-[#e9e9e9]">
+                <td class="cr-cart-name w-[40%] py-[25px] px-[14px] text-[#444] text-[16px] text-left bg-[#f7f7f8]">
+                    <a href="javascript:void(0)" class="text-[#444] font-medium text-[14px] flex leading-[1.5] tracking-[0.6px] items-center">
+                        <img src="${item.image}" alt="${item.name}" class="cr-cart-img mr-[20px] w-[60px] border-[1px] border-solid border-[#e9e9e9] rounded-[5px]">
+                        ${item.name}
+                    </a>
+                </td>
+                <td class="cr-cart-price py-[25px] px-[14px] text-[#555] text-[15px] font-medium text-left bg-[#f7f7f8]">
+                    <span class="amount text-[#555] text-[15px] font-medium text-left">$${item.price.toFixed(2)}</span>
+                </td>
+                <td class="cr-cart-qty py-[25px] px-[14px] text-[#444] text-[16px] text-left bg-[#f7f7f8]">
+                    <div class="cart-qty-plus-minus w-[80px] h-[30px] my-[0] mx-auto relative overflow-hidden flex bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] items-center justify-between">
+                        <button type="button" class="plus h-[25px] w-[25px] mt-[-2px] border-[0] bg-transparent flex justify-center items-center" data-id="${item.id}">+</button>
+                        <input type="text" placeholder="." value="${item.quantity}" minlength="1" maxlength="20" class="quantity w-[30px] m-[0] p-[0] text-[#444] float-left text-[14px] font-semibold leading-[38px] h-auto text-center outline-[0]">
+                        <button type="button" class="minus h-[25px] w-[25px] mt-[-2px] border-[0] bg-transparent flex justify-center items-center" data-id="${item.id}">-</button>
+                    </div>
+                </td>
+                <td class="cr-cart-subtotal py-[25px] px-[14px] text-[#555] font-medium text-[15px] text-left bg-[#f7f7f8]">$${(item.price * item.quantity).toFixed(2)}</td>
+                <td class="cr-cart-remove py-[25px] px-[14px] w-[90px] text-[#555] font-medium text-[15px] text-right bg-[#f7f7f8]">
+                    <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out my-[0] mx-auto text-[#555] hover:text-[#fb5555]" data-id="${item.id}">
+                        <i class="ri-delete-bin-line text-[22px]"></i>
+                    </a>
+                </td>
+            </tr>
+        `;
 
-    // Save updated cart to localStorage
-    saveCart(cart);
-};
-
-// Function to display cart in the console (or update a cart section on the page)
-const displayCart = () => {
-    const cart = getCart();
-    console.log('Cart:', cart); // You can replace this with actual DOM manipulation to show the cart
-};
-
-// Function to attach event listeners to "Add to Cart" buttons
-const initAddToCartButtons = () => {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart'); // Assumes a class on each "Add to Cart" button
-    
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const productId = button.dataset.id;
-            const productName = button.dataset.name;
-            const productPrice = button.dataset.price;
-            const productImage = button.dataset.image;
-            const quantityInput = document.querySelector(`.quantity`);
-            const productQuantity = parseInt(quantityInput.value); // Get quantity from input
-
-            // Ensure valid quantity
-            if (isNaN(productQuantity) || productQuantity <= 0) {
-                alert('Please enter a valid quantity.');
-                return;
-            }
-
-            addToCart(productId, productName, productPrice, productImage, productQuantity);
-            alert(`${productName} added to cart with quantity ${productQuantity}`);
-        });
+        // Append the product HTML to the cart table body
+        cartTableBody.insertAdjacentHTML('beforeend', productHTML);
     });
 };
 
-// Call this function on page load to ensure the cart is set up
-document.addEventListener('DOMContentLoaded', () => {
-    initAddToCartButtons();
-    displayCart(); // Optionally call this if you want to show the cart immediately on page load
-});
-
+// Call the function to display the cart products
+displayCartProducts();

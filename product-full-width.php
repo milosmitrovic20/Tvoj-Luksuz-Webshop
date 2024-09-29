@@ -857,7 +857,7 @@ while ($row = $result->fetch_assoc()) {
     <!-- Main Custom -->
     <script src="assets/js/main.js"></script>
 
-    <script src="cart.js"></script>
+    <script src="addToCart.js"></script>
 </body>
 
 </html>
