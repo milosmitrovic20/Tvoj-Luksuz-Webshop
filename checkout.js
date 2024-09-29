@@ -8,11 +8,15 @@ const calculateTotalPrice = () => {
         totalPrice += item.price * item.quantity;
     });
 
+    // Display the total price in the checkout summary
+    const totalPriceElement = document.querySelector('.cr-checkout-summary .text-right');
+    totalPriceElement.textContent = `${totalPrice} RSD`;
+
     // Select the container where you want to display the total price
-    const totalPriceElement = document.querySelector('.cr-checkout-summary-total span.text-right');
+    const totalPriceWithShippingElement = document.querySelector('.cr-checkout-summary-total span.text-right');
 
     // Display the total price in the specified element
-    totalPriceElement.textContent = `${totalPrice} RSD`;
+    totalPriceWithShippingElement.textContent = `${totalPrice + 300} RSD`;
 };
 
 // Call the function to update the total price
