@@ -14,7 +14,7 @@ const displayCartProducts = () => {
                     </a>
                 </td>
                 <td class="cr-cart-price py-[25px] px-[14px] text-[#555] text-[15px] font-medium text-left bg-[#f7f7f8]">
-                    <span class="amount text-[#555] text-[15px] font-medium text-left">$${item.price.toFixed(2)}</span>
+                    <span class="amount text-[#555] text-[15px] font-medium text-left">$${item.price}</span>
                 </td>
                 <td class="cr-cart-qty py-[25px] px-[14px] text-[#444] text-[16px] text-left bg-[#f7f7f8]">
                     <div class="cart-qty-plus-minus w-[80px] h-[30px] my-[0] mx-auto relative overflow-hidden flex bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] items-center justify-between">
@@ -23,7 +23,7 @@ const displayCartProducts = () => {
                         <button type="button" class="minus h-[25px] w-[25px] mt-[-2px] border-[0] bg-transparent flex justify-center items-center" data-id="${item.id}">-</button>
                     </div>
                 </td>
-                <td class="cr-cart-subtotal py-[25px] px-[14px] text-[#555] font-medium text-[15px] text-left bg-[#f7f7f8]">$${(item.price * item.quantity).toFixed(2)}</td>
+                <td class="cr-cart-subtotal py-[25px] px-[14px] text-[#555] font-medium text-[15px] text-left bg-[#f7f7f8]">$${item.price * item.quantity}</td>
                 <td class="cr-cart-remove py-[25px] px-[14px] w-[90px] text-[#555] font-medium text-[15px] text-right bg-[#f7f7f8]">
                     <a href="javascript:void(0)" class="transition-all duration-[0.3s] ease-in-out my-[0] mx-auto text-[#555] hover:text-[#fb5555]" data-id="${item.id}">
                         <i class="ri-delete-bin-line text-[22px]"></i>
