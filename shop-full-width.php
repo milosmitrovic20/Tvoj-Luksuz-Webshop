@@ -183,14 +183,6 @@ if ($res->num_rows > 0) {
                                         <div class="cr-image-inner zoom-image-hover w-full h-full flex items-center justify-center relative overflow-hidden max-[991px]:pointer-events-none">
                                             <img src="<?php echo $row['url_slike']; ?>" alt="<?php echo $row['naziv']; ?>" class="w-full rounded-[5px]">
                                         </div>
-                                        <div class="cr-side-view transition-all duration-[0.4s] ease-in-out absolute z-[20] top-[15px] right-[-40px] grid opacity-0 max-[991px]:right-[12px]">
-                                            <a href="javascript:void(0)" class="wishlist h-[35px] w-[35px] flex items-center justify-center m-0 p-0 bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]">
-                                                <i class="ri-heart-line text-[18px] leading-[10px]"></i>
-                                            </a>
-                                        </div>
-                                        <a class="cr-shopping-bag h-[35px] w-[35px] absolute bottom-[-16px] flex items-center justify-center m-0 p-0 bg-[#f7f7f8] border-[1px] border-solid border-[#e9e9e9] rounded-[100%]" href="javascript:void(0)">
-                                            <i class="ri-shopping-bag-line text-[#64b496]"></i>
-                                        </a>
                                     </div>
                                     <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
                                         <a href="product-full-width.php?id=<?php echo $row['id_proizvoda']; ?>" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center"><?php echo $row['naziv']; ?></a>
