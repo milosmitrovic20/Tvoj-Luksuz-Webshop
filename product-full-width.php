@@ -203,16 +203,6 @@ while ($row = $result->fetch_assoc()) {
                         <p class="mb-[0] text-[14px] font-Poppins text-[#7a7a7a] leading-[1.75] "><?php echo $product['short_description']; ?></p>
                     </div>
                     <div class="cr-size-and-weight pt-[20px]">
-                        <div class="cr-review-star flex">
-                            <div class="cr-star mr-[10px]">
-                                <i class="ri-star-fill text-[16px] text-[#f5885f]"></i>
-                                <i class="ri-star-fill text-[16px] text-[#f5885f]"></i>
-                                <i class="ri-star-fill text-[16px] text-[#f5885f]"></i>
-                                <i class="ri-star-fill text-[16px] text-[#f5885f]"></i>
-                                <i class="ri-star-line text-[16px] text-[#f5885f]"></i>
-                            </div>
-                            <p class="mb-[0] text-[15px] font-Poppins text-[#7a7a7a] leading-[1.75] max-[380px]:hidden">( 2 recenzije )</p>
-                        </div>
                         <div class="list">
                             <ul class="mt-[15px] p-[0] mb-[1rem]">
                                 <li class="py-[5px] text-[#777] flex"><label class="min-w-[100px] mr-[10px] text-[#2b2b2d] font-semibold flex justify-between">Dimenzije <span>:</span></label>135 x 75 cm</li>
@@ -253,9 +243,6 @@ while ($row = $result->fetch_assoc()) {
                             <li class="nav-item transition-all duration-[0.3s] mr-[30px] relative ease-in-out">
                                 <a href="#additional" class="mb-[25px] flex font-Poppins text-[17px] font-semibold leading-[1.5] tracking-[0] text-[#2b2b2d] text-left max-[1399px]:text-[18px] max-[767px]:text-[16px] max-[575px]:mb-[15px]">Informacije</a>
                             </li>
-                            <li class="nav-item transition-all duration-[0.3s] mr-[30px] relative ease-in-out">
-                                <a href="#review" class="mb-[25px] flex font-Poppins text-[17px] font-semibold leading-[1.5] tracking-[0] text-[#2b2b2d] text-left max-[1399px]:text-[18px] max-[767px]:text-[16px] max-[575px]:mb-[15px]">Recenzije</a>
-                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-delivery-pane" id="description">
@@ -289,65 +276,6 @@ while ($row = $result->fetch_assoc()) {
                                             <li class="py-[5px] text-[#777] flex"><label class="min-w-[100px] mr-[10px] text-[#2b2b2d] font-semibold flex justify-between">Items <span>:</span></label>1</li>
                                         </ul>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="tab-delivery-pane" id="review">
-                                <div class="cr-tab-content-from pt-[30px]">
-                                    <div class="post mb-[30px]">
-                                        <div class="content flex max-[575px]:flex-col">
-                                            <img src="assets/img/review/1.jpg" alt="review" class="h-[50px] w-[50px] mr-[24px] rounded-[5px] max-[575px]:mb-[24px]">
-                                            <div class="details flex flex-col">
-                                                <span class="date mb-[10px] text-[13px] text-[#777]">Jan 08, 2024</span>
-                                                <span class="name mb-[10px] font-medium text-[17px]">Vuk Ristić</span>
-                                            </div>
-                                            <div class="cr-t-review-rating ml-auto mb-[20px] max-[575px]:ml-[0] max-[575px]:mb-[24px]">
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                            </div>
-                                        </div>
-                                        <p class="m-[0] font-Poppins text-[14px] text-[#7a7a7a] leading-[1.75] pl-[74px] max-[575px]:p-[0]">Ova zaštita od sunca za šoferšajbnu je apsolutni must-have za svakog vozača! Veoma je jednostavna za postavljanje i pokriva celu šoferšajbnu, pružajući potpunu zaštitu od sunčevih zraka. Primetio sam da je temperatura u automobilu znatno niža kada koristim ovu zaštitu, što čini vožnju mnogo prijatnijom, posebno tokom vrelih letnjih dana. Materijal je kvalitetan i izdržljiv, a dizajn je dovoljno kompaktan da se lako sklapa i odlaže kada nije u upotrebi. Definitivno preporučujem svima koji žele da zaštite svoj automobil od sunca!</p>
-                                        <div class="content mt-[30px] flex max-[575px]:flex-col">
-                                            <img src="assets/img/review/2.jpg" alt="review" class="h-[50px] w-[50px] mr-[24px] rounded-[5px] max-[575px]:mb-[24px]">
-                                            <div class="details flex flex-col">
-                                                <span class="date mb-[10px] text-[13px] text-[#777]">Mar 22, 2024</span>
-                                                <span class="name mb-[10px] font-medium text-[17px]">Mateja Mitrović</span>
-                                            </div>
-                                            <div class="cr-t-review-rating ml-auto mb-[20px] max-[575px]:ml-[0] max-[575px]:mb-[24px]">
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-line text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                            </div>
-                                        </div>
-                                        <p class="m-[0] font-Poppins text-[14px] text-[#7a7a7a] leading-[1.75] pl-[74px] max-[575px]:p-[0]">Prezadovoljan sam ovom zaštitom od sunca za šoferšajbnu! Ne samo da efektivno blokira sunce i održava unutrašnjost automobila hladnijom, već je i vrlo jednostavna za korišćenje. Samo je raširim preko šoferšajbne i obezbedim uz pomoć retrovizora. Uklanjanje je podjednako lako, i kad je ne koristim, sklapa se u mali paket koji ne zauzima mnogo prostora u kolima. Materijal deluje kvalitetno i verujem da će dugo trajati. Ovo je definitivno proizvod koji bih preporučio svim vozačima!</p>
-                                    </div>
-                                    <h4 class="heading font-Poppins text-[16px] font-medium leading-[1.5] text-[#2b2b2d] pb-[10px] mb-[0.5rem] ">Dodaj recenziju</h4>
-                                    <form action="javascript:void(0)">
-                                        <div class="cr-ratting-star flex">
-                                            <span class="font-Poppins text-[14px] text-[#7a7a7a] leading-[1.75] mr-[10px]">Tvoja ocena :</span>
-                                            <div class="cr-t-review-rating mb-[20px]">
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-fill text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-line text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-line text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                                <i class="ri-star-s-line text-[19px] text-[#f5885f] tracking-[-5px]"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cr-ratting-input mb-[10px]">
-                                            <input name="your-name" placeholder="Ime" type="text" class="w-full h-[50px] py-[5px] px-[20px] outline-[0] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] twxt-[#777] text-[14px]">
-                                        </div>
-                                        <div class="cr-ratting-input mb-[10px]">
-                                            <input name="your-email" placeholder="Email*" type="email" required class="w-full h-[50px] py-[5px] px-[20px] outline-[0] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] twxt-[#777] text-[14px]">
-                                        </div>
-                                        <div class="cr-ratting-input form-submit">
-                                            <textarea name="your-commemt" placeholder="Komentar" class="w-full h-[150px] mb-[15px] p-[20px] bg-transparent text-[14px] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] text-[#777] outline-[0]"></textarea>
-                                            <button class="cr-button h-[40px] font-bold transition-all duration-[0.3s] ease-in-out py-[8px] px-[22px] text-[14px] font-Manrope capitalize leading-[1.2] bg-[#64b496] text-[#fff] border-[1px] border-solid border-[#64b496] rounded-[5px] flex items-center justify-center hover:bg-[#000] hover:border-[#000]" type="submit" value="Submit">Pošalji</button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -193,16 +193,6 @@ if ($res->num_rows > 0) {
                                         </a>
                                     </div>
                                     <div class="cr-product-details pt-[24px] text-center overflow-hidden max-[1199px]:pt-[20px]">
-                                        <div class="cr-brand">
-                                            <div class="cr-star mb-[12px] flex justify-center items-center">
-                                                <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                                <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                                <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                                <i class="ri-star-fill mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                                <i class="ri-star-line mx-[1px] text-[15px] text-[#f5885f]"></i>
-                                                <p class="mb-[0] font-Poppins ml-[5px] text-[#999] text-[11px] leading-[10px]">(4.5)</p>
-                                            </div>
-                                        </div>
                                         <a href="product-full-width.php?id=<?php echo $row['id_proizvoda']; ?>" class="title transition-all duration-[0.3s] ease-in-out mb-[12px] font-Poppins text-[15px] font-medium leading-[24px] text-[#2b2b2d] hover:text-[#64b496] flex justify-center"><?php echo $row['naziv']; ?></a>
                                         <p class="cr-price font-Poppins text-[16px] text-[#7a7a7a] leading-[1.75] max-[1199px]:text-[14px]">
                                             <span class="new-price font-Poppins text-[16px] leading-[1.75] max-[1199px]:text-[14px] font-bold text-[#64b496]"><?php echo $row['cena_sa_popustom']; ?> RSD</span> 
@@ -213,19 +203,6 @@ if ($res->num_rows > 0) {
                             </div>
                         <?php endwhile; ?>                             
                     </div>
-                    <nav aria-label="..." class="cr-pagination mt-[24px] flex justify-center w-full">
-                        <ul class="pagination flex text-[1rem] border-[1px] border-solid border-[#eee] rounded-[10px]">
-                            <li class="page-item disabled px-[0.75rem] py-[0.375rem] bg-[#f7f7f8] rounded-l-[10px] border-r-[1px] border-solid border-[#eee] hover:bg-[#f7f7f8]">
-                                <span class="page-link">Prethodna</span>
-                            </li>
-                            <li class="page-item px-[0.75rem] py-[0.375rem] border-r-[1px] border-solid border-[#eee] hover:bg-[#f7f7f8] active" aria-current="page">
-                                <span class="page-link">1</span>
-                            </li>
-                            <li class="page-item px-[0.75rem] py-[0.375rem] border-r-[1px] border-solid border-[#eee] hover:bg-[#f7f7f8]"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item px-[0.75rem] py-[0.375rem] border-r-[1px] border-solid border-[#eee] hover:bg-[#f7f7f8]"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item px-[0.75rem] py-[0.375rem] rounded-r-[10px] hover:bg-[#f7f7f8]"><a class="page-link" href="#">Sledeća</a></li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
         </div>
