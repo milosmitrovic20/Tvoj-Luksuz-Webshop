@@ -79,6 +79,7 @@ document.querySelector('.cr-check-order-btn').addEventListener('click', async (e
     const data = {};
     formData.forEach((value, key) => {
         data[key] = value;
+        console.log(data[key]);
     });
 
     // Convert cart items (from localStorage) into an array
