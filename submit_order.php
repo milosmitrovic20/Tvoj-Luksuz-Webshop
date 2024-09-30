@@ -13,7 +13,7 @@ require 'path_to_phpmailer/Exception.php';
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Check if required fields are present
-if (!isset($data['first_name'], $data['last_name'], $data['address'], $data['city'], $data['zip_code'], $data['phone'], $data['cartItems'])) {
+if (!isset($data['first_name'], $data['last_name'], $data['address'], $data['city'], $data['zip_code'], $data['phone'], $data['email'], $data['cartItems'])) {
     echo json_encode(['success' => false, 'error' => 'Nedostaju potrebni podaci']);
     exit;
 }
@@ -36,18 +36,19 @@ try {
     }
 
     // Insert into porudzbine table
-    $stmt = $conn->prepare("INSERT INTO porudzbine (ime, prezime, adresa, grad, postanski_broj, broj_telefona, ukupna_cena, cena_dostave) 
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO porudzbine (ime, prezime, adresa, grad, postanski_broj, broj_telefona, mejl, ukupna_cena, cena_dostave) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     // Bind values
     $stmt->bind_param(
-        "ssssssii",
+        "sssssssii",
         $data['first_name'],
         $data['last_name'],
         $data['address'],
         $data['city'],
         $data['zip_code'],
         $data['phone'],
+        $data['email'],
         $ukupnaCena,
         $cenaDostave
     );
@@ -90,7 +91,7 @@ try {
 
         //Recipients
         $mail->setFrom('prodaja@tvojluksuz.rs', 'Tvoj luksuz');
-        $mail->addAddress($email);  // Customer's email
+        $mail->addAddress($data['email']);  // Customer's email
 
         // Email content
         $mail->isHTML(true);                                  
