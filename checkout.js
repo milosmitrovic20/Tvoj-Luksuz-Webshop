@@ -79,11 +79,12 @@ document.querySelector('.cr-check-order-btn').addEventListener('click', async (e
     const data = {};
     formData.forEach((value, key) => {
         data[key] = value;
-        console.log(data[key]);
     });
 
     // Convert cart items (from localStorage) into an array
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    console.log(cartItems)
 
     // Add cart items to the data object
     data.cartItems = cartItems;
