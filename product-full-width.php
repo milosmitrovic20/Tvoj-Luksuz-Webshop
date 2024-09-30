@@ -247,7 +247,7 @@ while ($row = $result->fetch_assoc()) {
                                     </div>
                                     <h4 class="heading mb-[0] pt-[30px] pb-[20px] font-Poppins text-[16px] font-medium leading-[1.5] text-left text-[#2b2b2d] border-b-[1px] border-solid border-[#e9e9e9]">Pakovanje i dostava</h4>
                                     <div class="cr-description pt-[30px]">
-                                        <p class="text-[14px] text-left mb-[0] font-Poppins text-[#7a7a7a] leading-[1.75]">Dostava za 2-3 radna dana. Cena dostave je 280 dinara, a za porudžbine preko 2.000 dinara dostava je besplatna.</p>
+                                        <p class="text-[14px] text-left mb-[0] font-Poppins text-[#7a7a7a] leading-[1.75]">Dostava za 2-3 radna dana. Cena dostave je 300 dinara, a za porudžbine preko 4.500 dinara dostava je besplatna.</p>
                                     </div>
                                 </div>
                             </div>
