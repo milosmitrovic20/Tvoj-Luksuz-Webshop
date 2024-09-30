@@ -84,10 +84,10 @@ document.querySelector('.cr-check-order-btn').addEventListener('click', async (e
     // Convert cart items (from localStorage) into an array
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-    console.log(cartItems)
-
     // Add cart items to the data object
     data.cartItems = cartItems;
+
+    console.log(data);
 
     // Send data to the server via fetch
     try {
