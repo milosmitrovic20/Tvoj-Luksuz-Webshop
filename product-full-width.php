@@ -43,9 +43,9 @@ while ($row = $result->fetch_assoc()) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="ecommerce, market, shop, mart, cart, deal, multipurpose, marketplace">
-    <meta name="description" content="<?php echo $product['title']; ?>">
+    <meta name="description" content="<?php echo $product['title']; ?> - Tvoj luksuz">
     <meta name="author" content="milosmitrovic20">
-    <title><?php echo $product['title']; ?></title>
+    <title><?php echo $product['title']; ?> - Tvoj luksuz</title>
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/img/logo/favicon.png">
