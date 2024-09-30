@@ -69,25 +69,14 @@ if ($res->num_rows > 0) {
                     <div class="top-header py-[20px] flex flex-row gap-[10px] justify-between border-b-[1px] border-solid border-[#e9e9e9] relative z-[4] max-[575px]:py-[15px] max-[575px]:block">
                         <a href="index.html" class="cr-logo max-[575px]:mb-[15px] max-[575px]:flex max-[575px]:justify-center">
                             <img src="assets/img/logo/logo.png" alt="logo" class="logo block h-[35px] max-[575px]:w-[100px]">
-                            <img src="assets/img/logo/dark-logo.png" alt="logo" class="dark-logo hidden h-[35px] w-[115px] max-[575px]:w-[100px]">
                         </a>
                         <form class="cr-search relative max-[575px]:max-w-[350px] max-[575px]:m-auto">
                             <input class="search-input w-[600px] h-[45px] pl-[15px] pr-[175px] border-[1px] border-solid border-[#64b496] rounded-[5px] outline-[0] max-[1399px]:w-[400px] max-[991px]:max-w-[350px] max-[575px]:w-full max-[420px]:pr-[45px]" type="text" placeholder="Pretraži sajt">
-                            <select class="form-select mr-[10px] w-[120px] h-[calc(100%-2px)] border-[0] tracking-[0] absolute top-[1px] pt-[0.375rem] pb-[0.375rem] pl-[0.5rem] outline-[0] right-[45px] text-[13px] border-l-[1px] border-solid border-[#64b496] rounded-[0] max-[420px]:hidden" aria-label="Default select example">
-                                <option selected>Sve kategorije</option>
-                                <option value="1">Domaćinstvo</option>
-                                <option value="2">Sve za kuhinju</option>
-                                <option value="3">Elektronski uređaji</option>
-                            </select>
                             <a href="javascript:void(0)" class="search-btn w-[45px] bg-[#64b496] absolute right-[0] top-[0] bottom-[0] rounded-r-[5px] flex items-center justify-center">
                                 <i class="ri-search-line text-[14px] text-[#fff]"></i>
                             </a>
                         </form>
                         <div class="cr-right-bar flex max-[991px]:hidden">
-                            <a href="wishlist.html" class="cr-right-bar-item pr-[30px] transition-all duration-[0.3s] ease-in-out flex items-center">
-                                <i class="ri-heart-3-line pr-[5px] text-[21px] leading-[17px]"></i>
-                                <span class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[15px] leading-[15px] font-medium text-[#000]">Omiljeno</span>
-                            </a>
                             <a href="cart.html" class="cr-right-bar-item transition-all duration-[0.3s] ease-in-out flex items-center">
                                 <i class="ri-shopping-bag-line pr-[5px] text-[21px] leading-[17px]"></i>
                                 <span class="transition-all duration-[0.3s] ease-in-out font-Poppins text-[15px] leading-[15px] font-medium text-[#000]">Korpa</span>
@@ -111,48 +100,20 @@ if ($res->num_rows > 0) {
                         <a href="javascript:void(0)" class="navbar-toggler py-[7px] px-[14px] hidden text-[16px] leading-[1] max-[991px]:flex max-[991px]:p-[0] max-[991px]:border-[0]">
                             <i class="ri-menu-3-line max-[991px]:text-[20px]"></i>
                         </a>
-                        <div class="cr-header-buttons hidden max-[991px]:flex max-[991px]:items-center">
-                            <ul class="navbar-nav relative z-[3] m-auto max-[1199px]:mr-[-5px] max-[991px]:m-[0] flex flex-col">
-                                <li class="nav-item dropdown relative">
-                                    <ul class="dropdown-menu transition-all duration-[0.3s] ease-in-out py-[8px] min-w-[160px] mt-[35px] absolute text-left opacity-0 invisible left-auto right-0 bg-[#fff] rounded-[5px] block z-[9] border-[1px] border-solid border-[#e9e9e9]">
-                                        <li class="w-full">
-                                            <a class="dropdown-item transition-all duration-[0.3s] ease-in-out w-full block py-[7px] px-[20px] bg-[#fff] relative capitalize text-[13px] text-[#777]" href="register.html">Registracija</a>
-                                        </li>
-                                        <li class="w-full">
-                                            <a class="dropdown-item transition-all duration-[0.3s] ease-in-out w-full block py-[7px] px-[20px] bg-[#fff] relative capitalize text-[13px] text-[#777]" href="checkout.html">Plaćanje</a>
-                                        </li>
-                                        <li class="w-full">
-                                            <a class="dropdown-item transition-all duration-[0.3s] ease-in-out w-full block py-[7px] px-[20px] bg-[#fff] relative capitalize text-[13px] text-[#777]" href="login.html">Prijava</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <a href="wishlist.html" class="cr-right-bar-item transition-all duration-[0.3s] ease-in-out mr-[16px] max-[991px]:mr-[20px]">
-                                <i class="ri-heart-line text-[20px]"></i>
-                            </a>
-                            <a href="cart.html" class="cr-right-bar-item transition-all duration-[0.3s] ease-in-out mr-[16px] max-[991px]:m-[0]">
-                                <i class="ri-shopping-cart-line text-[20px]"></i>
-                            </a>
-                        </div>
                         <div class="min-[992px]:flex min-[992px]:basis-auto grow-[1] items-center hidden" id="navbarSupportedContent">
                             <ul class="navbar-nav flex min-[992px]:flex-row items-center m-auto relative z-[3] min-[992px]:flex-row max-[1199px]:mr-[-5px] max-[991px]:m-[0]">
                                 <li class="nav-item relative mr-[25px] max-[1399px]:mr-[20px] max-[1199px]:mr-[30px]">
-                                    <a class="nav-link font-Poppins text-[14px] font-medium block text-[#000] z-[1] flex items-center relative py-[11px] px-[8px] max-[1199px]:py-[8px] max-[1199px]:px-[0]" href="javascript:void(0)">
+                                    <a class="nav-link font-Poppins text-[14px] font-medium block text-[#000] z-[1] flex items-center relative py-[11px] px-[8px] max-[1199px]:py-[8px] max-[1199px]:px-[0]" href="index.html">
                                         Početna
                                     </a>
                                 </li>
                                 <li class="nav-item relative mr-[25px] max-[1399px]:mr-[20px] max-[1199px]:mr-[30px]">
-                                    <a class="nav-link font-Poppins text-[14px] font-medium block text-[#000] z-[1] flex items-center relative py-[11px] px-[8px] max-[1199px]:py-[8px] max-[1199px]:px-[0]" href="javascript:void(0)">
-                                        Kategorije
-                                    </a>
-                                </li>
-                                <li class="nav-item relative mr-[25px] max-[1399px]:mr-[20px] max-[1199px]:mr-[30px]">
-                                    <a class="nav-link font-Poppins text-[14px] font-medium block text-[#000] z-[1] flex items-center relative py-[11px] px-[8px] max-[1199px]:py-[8px] max-[1199px]:px-[0]" href="javascript:void(0)">
+                                    <a class="nav-link font-Poppins text-[14px] font-medium block text-[#000] z-[1] flex items-center relative py-[11px] px-[8px] max-[1199px]:py-[8px] max-[1199px]:px-[0]" href="shop-full-width.php">
                                         Proizvodi
                                     </a>
                                 </li>
                                 <li class="nav-item relative">
-                                    <a class="nav-link font-Poppins text-[14px] font-medium block text-[#000] z-[1] flex items-center relative py-[11px] px-[8px] max-[1199px]:py-[8px] max-[1199px]:px-[0]" href="javascript:void(0)">
+                                    <a class="nav-link font-Poppins text-[14px] font-medium block text-[#000] z-[1] flex items-center relative py-[11px] px-[8px] max-[1199px]:py-[8px] max-[1199px]:px-[0]" href="contact-us.html">
                                         Kontakt
                                     </a>
                                 </li>
@@ -179,16 +140,13 @@ if ($res->num_rows > 0) {
             <div class="cr-menu-content">
                 <ul>
                     <li class="dropdown drop-list relative leading-[28px]">
-                        <a href="javascript:void(0)" class="dropdown-list py-[12px] block capitalize text-[15px] font-medium text-[#444] border-b-[1px] border-solid border-[#e9e9e9]">Početna</a>
+                        <a href="index.html" class="dropdown-list py-[12px] block capitalize text-[15px] font-medium text-[#444] border-b-[1px] border-solid border-[#e9e9e9]">Početna</a>
                     </li>
                     <li class="dropdown drop-list relative leading-[28px]">
-                        <a href="javascript:void(0)" class="dropdown-list py-[12px] block capitalize text-[15px] font-medium text-[#444] border-b-[1px] border-solid border-[#e9e9e9]">Kategorije</a>
+                        <a href="shop-full-width.php" class="dropdown-list py-[12px] block capitalize text-[15px] font-medium text-[#444] border-b-[1px] border-solid border-[#e9e9e9]">Proizvodi</a>
                     </li>
                     <li class="dropdown drop-list relative leading-[28px]">
-                        <a href="javascript:void(0)" class="dropdown-list py-[12px] block capitalize text-[15px] font-medium text-[#444] border-b-[1px] border-solid border-[#e9e9e9]">Proizvodi</a>
-                    </li>
-                    <li class="dropdown drop-list relative leading-[28px]">
-                        <a href="javascript:void(0)" class="dropdown-list py-[12px] block capitalize text-[15px] font-medium text-[#444] border-b-[1px] border-solid border-[#e9e9e9]">Kontakt</a>
+                        <a href="contact-us.html" class="dropdown-list py-[12px] block capitalize text-[15px] font-medium text-[#444] border-b-[1px] border-solid border-[#e9e9e9]">Kontakt</a>
                     </li>
                 </ul>
             </div>
