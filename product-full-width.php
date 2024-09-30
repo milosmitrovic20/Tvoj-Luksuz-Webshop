@@ -77,8 +77,8 @@ while ($row = $result->fetch_assoc()) {
         <span class="loader w-[10px] h-[10px] rounded-[50%] inline-block relative text-[#64b496] left-[-100px]"></span>
     </div>
 
-     <!-- Header -->
-     <header class="h-[142px] max-[991px]:h-[133px] max-[575px]:h-[173px] bg-[#fff] border-b-[1px] border-solid border-[#e9e9e9]">
+    <!-- Header -->
+    <header class="h-[142px] max-[991px]:h-[133px] max-[575px]:h-[173px] bg-[#fff] border-b-[1px] border-solid border-[#e9e9e9]">
         <div class="flex flex-wrap justify-between relative items-center mx-auto min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">
             <div class="flex flex-wrap w-full">
                 <div class="w-full px-[12px]">
@@ -400,13 +400,13 @@ while ($row = $result->fetch_assoc()) {
                 <div class="min-[1200px]:w-[16.66%] min-[992px]:w-[25%] min-[576px]:w-full w-full px-[12px] cr-footer-border">
                     <div class="cr-footer">
                         <h4 class="cr-sub-title font-Manrope relative text-[18px] font-bold leading-[1.3] text-[#000] mb-[15px] max-[991px]:py-[15px] max-[991px]:mb-[0] max-[991px]:text-[15px] max-[991px]:border-b-[1px] max-[991px]:border-solid max-[991px]:border-[#e9e9e9]">
-                            Kategorije
+                            Stranice
                             <span class="cr-heading-res hidden"></span>
                         </h4>
                         <ul class="cr-footer-links max-[991px]:hidden cr-footer-dropdown max-[991px]:mt-[24px]">
-                            <li class="mb-[12px] font-Poppins text-[14px] leading-[26px] text-[#777] relative max-[991px]:my-[12px] max-[991px]:mt-[-5px]"><a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out relative font-Poppins text-[14px] leading-[26px] text-[#777] hover:text-[#64b496]">Domaćinstvo</a></li>
-                            <li class="mb-[12px] font-Poppins text-[14px] leading-[26px] text-[#777] relative max-[991px]:my-[12px]"><a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out relative font-Poppins text-[14px] leading-[26px] text-[#777] hover:text-[#64b496]">Elektronski uređaji</a></li>
-                            <li class="mb-[12px] font-Poppins text-[14px] leading-[26px] text-[#777] relative max-[991px]:my-[12px]"><a href="shop-left-sidebar.html" class="transition-all duration-[0.3s] ease-in-out relative font-Poppins text-[14px] leading-[26px] text-[#777] hover:text-[#64b496]">Rasveta za dvorište</a></li>
+                            <li class="mb-[12px] font-Poppins text-[14px] leading-[26px] text-[#777] relative max-[991px]:my-[12px] max-[991px]:mt-[-5px]"><a href="index.html" class="transition-all duration-[0.3s] ease-in-out relative font-Poppins text-[14px] leading-[26px] text-[#777] hover:text-[#64b496]">Početna</a></li>
+                            <li class="mb-[12px] font-Poppins text-[14px] leading-[26px] text-[#777] relative max-[991px]:my-[12px]"><a href="shop-full-width.php" class="transition-all duration-[0.3s] ease-in-out relative font-Poppins text-[14px] leading-[26px] text-[#777] hover:text-[#64b496]">Proizvodi</a></li>
+                            <li class="mb-[12px] font-Poppins text-[14px] leading-[26px] text-[#777] relative max-[991px]:my-[12px]"><a href="contact-us.html" class="transition-all duration-[0.3s] ease-in-out relative font-Poppins text-[14px] leading-[26px] text-[#777] hover:text-[#64b496]">Kontakt</a></li>
                         </ul>
                     </div>
                 </div>
@@ -448,73 +448,6 @@ while ($row = $result->fetch_assoc()) {
             </svg>
         </div>
     </a>
-
-    <!-- Quick View Model -->
-    <div class="cr-modal-overlay w-full h-screen hidden fixed top-0 left-0 z-[10] bg-[#000000b3]"></div>
-    <div class="cr-modal max-[575px]:w-full fixed top-[50%] left-[50%] z-[30] max-[767px]:w-full hidden max-[767px]:max-h-full max-[767px]:overflow-y-auto">
-        <div class="cr-modal-dialog h-full my-[0%] mx-auto max-w-[900px] w-[900px] max-[991px]:max-w-[650px] max-[991px]:w-[650px] max-[767px]:h-auto max-[767px]:m-[0] max-[767px]:py-[35px] max-[767px]:mx-auto max-[575px]:w-[90%] transition-transform duration-[0.3s] ease-out cr-fadeOutUp">
-            <div class="modal-content p-[30px] relative bg-[#fff] rounded-[5px]">
-                <div class="cr-close-modal absolute top-[10px] right-[10px] leading-[18px]">
-                    <i class="ri-close-line text-[18px] font-extrabold text-[#ca4141] cursor-pointer"></i>
-                </div>
-                <div class="modal-body mx-[-12px] max-[767px]:mx-[0]">
-                    <div class="w-full flex flex-wrap w-full">
-                        <div class="min-[768px]:w-[41.66%] px-[12px] max-[767px]:px-[0] w-full">
-                            <div class="zoom-image-hover modal-border-image border-[1px] border-solid border-[#e9e9e9] h-full flex items-center text-center bg-[#f7f7f8] rounded-[5px] crosshair">
-                                <img src="assets/img/product/tab-1.jpg" alt="product-tab-2" class="product-image w-full block m-auto">
-                            </div>
-                        </div>
-                        <div class="min-[768px]:w-[58.33%] px-[12px] max-[767px]:px-[0] w-full">
-                            <div class="cr-size-and-weight-contain border-b-[1px] border-solid border-[#e9e9e9] pb-[20px] max-[767px]:mt-[24px]">
-                                <h2 class="heading mb-[15px] block text-[#2b2b2d] text-[22px] leading-[1.5] font-medium max-[1399px]:text-[26px] max-[991px]:text-[20px]">Peach Seeds Of Change Oraganic Quinoa, Brown fruit</h2>
-                                <p class="mb-[0] font-Poppins text-[#7a7a7a] text-[14px] leading-[1.75]">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                    since the 1900s,</p>
-                            </div>
-                            <div class="cr-size-and-weight pt-[20px]">
-                                <div class="cr-review-star flex">
-                                    <div class="cr-star mr-[10px]">
-                                        <i class="ri-star-fill text-[16px] text-[#f5885f]"></i>
-                                        <i class="ri-star-fill text-[16px] text-[#f5885f]"></i>
-                                        <i class="ri-star-fill text-[16px] text-[#f5885f]"></i>
-                                        <i class="ri-star-fill text-[16px] text-[#f5885f]"></i>
-                                        <i class="ri-star-fill text-[16px] text-[#f5885f]"></i>
-                                    </div>
-                                    <p class="mb-[0] text-[15px] font-Poppins text-[#7a7a7a] leading-[1.75] max-[380px]:hidden">( 75 Review )</p>
-                                </div>
-                                <div class="cr-product-price pt-[20px]">
-                                    <span class="new-price font-Poppins text-[24px] font-semibold leading-[1.167] text-[#64b496] max-[767px]:text-[22px] max-[575px]:text-[20px]">$120.25</span>
-                                    <span class="old-price font-Poppins text-[16px] line-through leading-[1.75] text-[#7a7a7a]">$123.25</span>
-                                </div>
-                                <div class="cr-size-weight flex items-center pt-[20px] max-[380px]:flex-col max-[380px]:justify-start max-[380px]:items-start">
-                                    <h5 class="font-Poppins mb-[0] text-[16px] leading-[1.556] text-[#2b2b2d] max-[1199px]:min-w-[100px] max-[1199px]:text-[14px]"><span>Size</span>/<span>Weight</span> :</h5>
-                                    <div class="cr-kg pl-[10px] max-[380px]:pl-[0] max-[380px]:pt-[10px]">
-                                        <ul class="w-full p-[0] m-[0] flex flex-wrap">
-                                            <li class="transition-all duration-[0.3s] ease-in-out m-[2px] py-[5px] px-[10px] font-Poppins text-[12px] leading-[1] bg-[#fff] text-[#777] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] cursor-pointer max-[1199px]:mr-[5px] active-color">500gm</li>
-                                            <li class="transition-all duration-[0.3s] ease-in-out m-[2px] py-[5px] px-[10px] font-Poppins text-[12px] leading-[1] bg-[#fff] text-[#777] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] cursor-pointer max-[1199px]:mr-[5px]">1kg</li>
-                                            <li class="transition-all duration-[0.3s] ease-in-out m-[2px] py-[5px] px-[10px] font-Poppins text-[12px] leading-[1] bg-[#fff] text-[#777] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] cursor-pointer max-[1199px]:mr-[5px]">2kg</li>
-                                            <li class="transition-all duration-[0.3s] ease-in-out m-[2px] py-[5px] px-[10px] font-Poppins text-[12px] leading-[1] bg-[#fff] text-[#777] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] cursor-pointer max-[1199px]:mr-[5px]">5kg</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="cr-add-card flex pt-[20px]">
-                                    <div class="cr-qty-main h-full flex relative">
-                                        <input type="text" placeholder="." value="1" minlength="1" maxlength="20"
-                                            class="quantity h-[40px] w-[40px] mr-[5px] text-center border-[1px] border-solid border-[#e9e9e9] rounded-[5px]">
-                                        <button type="button" id="add_model" class="plus h-[18px] w-[18px] p-[0] bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] leading-[0]">+</button>
-                                        <button type="button" id="sub_model" class="minus h-[18px] w-[18px] p-[0] bg-[#fff] border-[1px] border-solid border-[#e9e9e9] rounded-[5px] leading-[0] absolute bottom-[0] right-[0]">-</button>
-                                    </div>
-                                    <div class="cr-add-button ml-[15px]">
-                                        <button type="button" class="cr-button h-[40px] font-bold transition-all duration-[0.3s] ease-in-out py-[8px] px-[22px] max-[380px]:text-[13px] text-[14px] font-Manrope leading-[1.2] bg-[#64b496] text-[#fff] border-[1px] border-solid border-[#64b496] rounded-[5px] flex items-center justify-center hover:bg-[#000] hover:border-[#000] max-[1199px]:py-[8px] max-[1199px]:px-[15px]">Dodaj u korpu</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     
     <!-- Vendor Custom -->
     <script src="assets/js/vendor/jquery-3.6.4.min.js"></script>
