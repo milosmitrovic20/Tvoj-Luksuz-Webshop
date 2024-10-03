@@ -6,9 +6,9 @@ include 'db_connect.php'; // Use the existing connection from db_connect.php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/phpmailer/folder/src/PHPMailer.php';
-require 'vendor/phpmailer/folder/src/SMTP.php';
-require 'vendor/phpmailer/folder/src/Exception.php';
+require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+require 'vendor/phpmailer/phpmailer/src/Exception.php';
 
 // Get the POST data from the request
 $data = json_decode(file_get_contents("php://input"), true);
