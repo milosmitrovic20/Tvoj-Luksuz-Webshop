@@ -3,6 +3,12 @@
 // Include your database connection
 include 'db_connect.php'; // Use the existing connection from db_connect.php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+require 'vendor/phpmailer/phpmailer/src/Exception.php';
 
 // Get the POST data from the request
 $data = json_decode(file_get_contents("php://input"), true);
@@ -71,8 +77,30 @@ try {
     // Commit transaction
     $conn->commit();
 
-    // Return success response
-    echo json_encode(['success' => true]);
+    // Send confirmation email
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->isSMTP();                                     
+        $mail->Host = 'mail.tvojluksuz.rs';                 
+        $mail->SMTPAuth = true;                               
+        $mail->Username = 'prodaja@tvojluksuz.rs';       
+        $mail->Password = 'i-N.F2rNE3xUrgb';                    
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;   
+        $mail->Port = 587;                                   
+        //Recipients
+        $mail->setFrom('prodaja@tvojluksuz.rs', 'Tvoj luksuz');
+        $mail->addAddress($email);  // Customer's email
+        // Email content
+        $mail->isHTML(true);                                  
+        $mail->Subject = 'Potvrda porudžbine';
+        $mail->Body    = '<b>Hvala na porudžbini!</b><br>Prosleđujemo podatke porudžbine...';
+        $mail->AltBody = 'Hvala na porudžbini!';
+        $mail->send();
+        echo json_encode(['success' => true]);
+    } catch (Exception $e) {
+        echo json_encode(['success' => false, 'error' => 'Email not sent. ' . $mail->ErrorInfo]);
+    }
 
 } catch (Exception $e) {
     // Rollback transaction if something goes wrong
