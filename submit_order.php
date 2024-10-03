@@ -77,6 +77,30 @@ try {
     // Commit transaction
     $conn->commit();
 
+    // Generate the order summary HTML for email
+    $orderDetails = "<h2>Detalji porudžbine:</h2>";
+    $orderDetails .= "<p>Ime: {$data['first_name']} {$data['last_name']}</p>";
+    $orderDetails .= "<p>Adresa: {$data['address']}, {$data['city']}, {$data['zip_code']}</p>";
+    $orderDetails .= "<p>Telefon: {$data['phone']}</p>";
+    $orderDetails .= "<table border='1' cellpadding='10' cellspacing='0'>";
+    $orderDetails .= "<thead><tr><th>Proizvod</th><th>Količina</th><th>Cena</th><th>Ukupno</th></tr></thead>";
+    $orderDetails .= "<tbody>";
+
+    foreach ($data['cartItems'] as $item) {
+        $itemTotal = $item['price'] * $item['quantity'];
+        $orderDetails .= "<tr>
+                            <td>{$item['name']}</td>
+                            <td>{$item['quantity']}</td>
+                            <td>{$item['price']} RSD</td>
+                            <td>{$itemTotal} RSD</td>
+                          </tr>";
+    }
+
+    $orderDetails .= "</tbody></table>";
+    $orderDetails .= "<p><strong>Ukupna cena proizvoda:</strong> {$ukupnaCena} RSD</p>";
+    $orderDetails .= "<p><strong>Cena dostave:</strong> {$cenaDostave} RSD</p>";
+    $orderDetails .= "<p><strong>Ukupno za naplatu:</strong> " . ($ukupnaCena + $cenaDostave) . " RSD</p>";
+
     // Send confirmation email
     $mail = new PHPMailer(true);
     try {
@@ -88,14 +112,17 @@ try {
         $mail->Password = 'i-N.F2rNE3xUrgb';                    
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;   
         $mail->Port = 587;                                   
+
         //Recipients
         $mail->setFrom('prodaja@tvojluksuz.rs', 'Tvoj luksuz');
-        $mail->addAddress($email);  // Customer's email
+        $mail->addAddress($data['email']);  // Customer's email
+
         // Email content
         $mail->isHTML(true);                                  
-        $mail->Subject = 'Potvrda porudžbine';
-        $mail->Body    = '<b>Hvala na porudžbini!</b><br>Prosleđujemo podatke porudžbine...';
+        $mail->Subject = 'Potvrda porudzbine';
+        $mail->Body    = '<b>Hvala na porudžbini!</b><br>' . $orderDetails;
         $mail->AltBody = 'Hvala na porudžbini!';
+
         $mail->send();
         echo json_encode(['success' => true]);
     } catch (Exception $e) {
