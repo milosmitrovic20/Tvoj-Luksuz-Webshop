@@ -71,6 +71,9 @@ try {
     // Commit transaction
     $conn->commit();
 
+    // Return success response
+    echo json_encode(['success' => true]);
+
 } catch (Exception $e) {
     // Rollback transaction if something goes wrong
     $conn->rollback();
