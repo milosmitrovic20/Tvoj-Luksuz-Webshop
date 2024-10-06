@@ -116,6 +116,11 @@ while ($row = $result->fetch_assoc()) {
                         <a href="javascript:void(0)" class="navbar-toggler py-[7px] px-[14px] hidden text-[16px] leading-[1] max-[991px]:flex max-[991px]:p-[0] max-[991px]:border-[0]">
                             <i class="ri-menu-3-line max-[991px]:text-[20px]"></i>
                         </a>
+                        <div class="cr-header-buttons hidden max-[991px]:flex max-[991px]:items-center">
+                            <a href="cart.html" class="cr-right-bar-item transition-all duration-[0.3s] ease-in-out mr-[16px] max-[991px]:m-[0]">
+                                <i class="ri-shopping-cart-line text-[20px]"></i>
+                            </a>
+                        </div>
                         <div class="min-[992px]:flex min-[992px]:basis-auto grow-[1] items-center hidden" id="navbarSupportedContent">
                             <ul class="navbar-nav flex min-[992px]:flex-row items-center m-auto relative z-[3] min-[992px]:flex-row max-[1199px]:mr-[-5px] max-[991px]:m-[0]">
                                 <li class="nav-item relative mr-[25px] max-[1399px]:mr-[20px] max-[1199px]:mr-[30px]">
