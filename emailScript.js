@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const emailForm = document.getElementById('emailForm');
-    const submitBtn = document.querySelector('.search-btn')[1]; // Target the <a> tag
+    const submitBtn = document.querySelectorAll('.search-btn')[1]; // Target the <a> tag
 
     submitBtn.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the default action of the <a> tag
