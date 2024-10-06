@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('ucitana');
     const emailForm = document.getElementById('emailForm');
     const submitBtn = document.querySelector('.search-btn'); // Target the <a> tag
 
