@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('ucitana');
     const emailForm = document.getElementById('emailForm');
-    const submitBtn = document.querySelector('.search-btn'); // Target the <a> tag
+    const submitBtn = document.querySelector('.search-btn')[1]; // Target the <a> tag
 
     submitBtn.addEventListener('click', function (event) {
-        console.log('kliknuto');
         event.preventDefault(); // Prevent the default action of the <a> tag
         
         const emailInput = document.getElementById('email').value;
