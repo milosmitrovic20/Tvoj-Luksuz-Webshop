@@ -338,7 +338,6 @@ echo $productCount;
     <script src="assets/js/main.js"></script>
 
     <script src="emailScript.js"></script>
-    <script src="search.js"></script>
 
 </body>
 
