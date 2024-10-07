@@ -210,7 +210,8 @@ $productCount = count($filteredProducts);
                     if ($productCount < 0): 
                         // Optional debug output
                         echo "<pre>"; 
-                        print_r($filteredProducts); 
+                        print_r($filteredProducts);
+                        echo "aiasjasi"; 
                         echo "</pre>"; 
                     ?>
                         <?php foreach ($filteredProducts as $product): ?>
