@@ -207,7 +207,7 @@ $productCount = count($filteredProducts);
                     </div>
                     <div class="flex flex-wrap col-50 mb-[-24px]">
                         <?php if ($productCount > 0): ?>
-                            <?php foreach ($filteredProducts as $product): ?>
+                            <?php foreach ($product as $filteredProducts): ?>
                                 <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
                                     <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
                                         <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
