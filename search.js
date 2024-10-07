@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-input');
+    const searchBtn = document.querySelector('.search-btn'); // Search button reference
     const productContainer = document.querySelector('.col-50'); // Assuming this is the container for products
 
     let products = [];
@@ -13,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error fetching products:', error));
 
-    // Event listener for search input
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
+    // Event listener for search button click
+    searchBtn.addEventListener('click', () => {
+        const query = searchInput.value.trim().toLowerCase();
         const filteredProducts = products.filter(product =>
             product.naziv.toLowerCase().includes(query)
         );
