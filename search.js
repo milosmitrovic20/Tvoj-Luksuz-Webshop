@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-input');
-    const searchBtn = document.querySelector('.search-btn'); // Search button reference
-    const productContainer = document.querySelector('.col-50'); // Assuming this is the container for products
+    const productContainer = document.querySelector('.col-50'); // Container for products
+    const productCountSpan = document.querySelector('.center-content span'); // Span for displaying the number of products found
 
     let products = [];
 
@@ -15,12 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error fetching products:', error));
 
     // Event listener for search button click
-    searchBtn.addEventListener('click', () => {
-        const query = searchInput.value.trim().toLowerCase();
+    document.querySelector('.search-btn').addEventListener('click', () => {
+        const query = searchInput.value.toLowerCase();
         const filteredProducts = products.filter(product =>
             product.naziv.toLowerCase().includes(query)
         );
         displayProducts(filteredProducts);
+        productCountSpan.textContent = `Pronašli smo ${filteredProducts.length} proizvoda za tebe!`;
     });
 
     // Function to display products
