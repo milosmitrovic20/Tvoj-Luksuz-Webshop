@@ -77,8 +77,6 @@ echo $productCount;
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <script src="search.js"></script>
 
 </head>
 
@@ -98,9 +96,9 @@ echo $productCount;
                         <a href="index.html" class="cr-logo max-[575px]:mb-[15px] max-[575px]:flex max-[575px]:justify-center">
                             <img src="assets/img/logo/logo.png" alt="logo" class="logo block h-[35px] max-[575px]:w-[100px]">
                         </a>
-                        <form class="cr-search relative max-[575px]:max-w-[350px] max-[575px]:m-auto">
-                            <input class="search-input w-[600px] h-[45px] pl-[15px] pr-[175px] border-[1px] border-solid border-[#64b496] rounded-[5px] outline-[0] max-[1399px]:w-[400px] max-[991px]:max-w-[350px] max-[575px]:w-full max-[420px]:pr-[45px]" type="text" placeholder="Pretraži sajt">
-                            <a href="javascript:void(0)" class="search-btn w-[45px] bg-[#64b496] absolute right-[0] top-[0] bottom-[0] rounded-r-[5px] flex items-center justify-center">
+                        <form class="cr-search relative max-[575px]:max-w-[350px] max-[575px]:m-auto" action="shop-full-width.php" method="get">
+                            <input class="search-input w-[600px] h-[45px] pl-[15px] pr-[175px] border-[1px] border-solid border-[#64b496] rounded-[5px] outline-[0] max-[1399px]:w-[400px] max-[991px]:max-w-[350px] max-[575px]:w-full max-[420px]:pr-[45px]" type="text" name="query" placeholder="Pretraži sajt">
+                            <a href="javascript:void(0)" class="search-btn w-[45px] bg-[#64b496] absolute right-[0] top-[0] bottom-[0] rounded-r-[5px] flex items-center justify-center" id="searchButton">
                                 <i class="ri-search-line text-[14px] text-[#fff]"></i>
                             </a>
                         </form>
@@ -344,6 +342,7 @@ echo $productCount;
     <script src="assets/js/main.js"></script>
 
     <script src="emailScript.js"></script>
+    <script src="searchScript.js"></script>
 
 </body>
 
