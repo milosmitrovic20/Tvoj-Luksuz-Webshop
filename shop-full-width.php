@@ -199,7 +199,7 @@ $productCount = count($filteredProducts);
                                 </div>
                                 <div class="center-content flex justify-start items-center flex-[1]">
                                     <span class="px-[12px] font-Poppins text-[14px] leading-[1.875] text-[#7a7a7a] max-[767px]:hidden">
-                                        Pronašli smo <?php echo $filteredProducts; ?> proizvod<?php echo $productCount !== 1 ? 'a' : ''; ?> za tebe!
+                                        Pronašli smo <?php print_r($filteredProducts); ?> proizvod<?php echo $productCount !== 1 ? 'a' : ''; ?> za tebe!
                                     </span>
                                 </div>
                             </div>
