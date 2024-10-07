@@ -208,11 +208,8 @@ $productCount = count($filteredProducts);
                     <div class="flex flex-wrap col-50 mb-[-24px]">
                     <?php 
                     if ($productCount > 0): 
-                        // Optional debug output
-                        echo "<pre>"; 
                         print_r($filteredProducts);
                         echo "aiasjasi"; 
-                        echo "</pre>"; 
                     ?>
                         <?php foreach ($filteredProducts as $product): ?>
                             <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
