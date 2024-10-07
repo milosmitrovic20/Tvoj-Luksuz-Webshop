@@ -31,6 +31,8 @@ if ($result->num_rows > 0) {
 $queryString = isset($_GET['query']) ? trim($_GET['query']) : '';
 $filteredProducts = $products; // Default to all products
 
+echo $queryString;
+
 if ($queryString) {
     // Filter products based on the search query
     $filteredProducts = array_filter($products, function($product) use ($queryString) {
