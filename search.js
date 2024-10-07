@@ -22,8 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
         displayProducts(filteredProducts);
-        
-        if (filteredProducts.length === 1) {
+
+        if (filteredProducts.length === 0) {
+            productCountSpan.textContent = `Nažalost, nismo pronašli nijedan proizvod koji odgovara tvojoj pretrazi.`;
+        }
+        else if (filteredProducts.length === 1) {
             productCountSpan.textContent = `Pronašli smo 1 proizvod za tebe!`;
         } else {
             productCountSpan.textContent = `Pronašli smo ${filteredProducts.length} proizvoda za tebe!`;
