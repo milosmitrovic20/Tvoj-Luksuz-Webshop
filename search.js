@@ -20,8 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const filteredProducts = products.filter(product =>
             product.naziv.toLowerCase().includes(query)
         );
+
         displayProducts(filteredProducts);
-        productCountSpan.textContent = `Pronašli smo ${filteredProducts.length} proizvoda za tebe!`;
+        
+        if (filteredProducts.length === 1) {
+            productCountSpan.textContent = `Pronašli smo 1 proizvod za tebe!`;
+        } else {
+            productCountSpan.textContent = `Pronašli smo ${filteredProducts.length} proizvoda za tebe!`;
+        }
     });
 
     // Function to display products

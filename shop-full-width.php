@@ -175,7 +175,7 @@ if ($res->num_rows > 0) {
                                     </a>
                                 </div>
                                 <div class="center-content flex justify-start items-center flex-[1]">
-                                    <span class="px-[12px] font-Poppins text-[14px] leading-[1.875] text-[#7a7a7a] max-[767px]:hidden">Pronašli smo <?php echo $row['total_products']; ?> proizvoda za tebe!</span>
+                                    <span class="px-[12px] font-Poppins text-[14px] leading-[1.875] text-[#7a7a7a] max-[767px]:hidden">Pronašli smo <?php echo $row['total_products']; ?> <?php echo ($row['total_products'] == 1) ? 'proizvod' : 'proizvoda'; ?> za tebe!</span>
                                 </div>
                             </div>
                         </div>
