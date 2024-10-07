@@ -97,16 +97,16 @@
     .swiper-wrapper {
         .swiper-slide-active {
             h5 {
-                animation: fadeInUp 2s both 1s;
+                animation: fadeInUp 1s both 0.5s;
             }
             h1 {
-                animation: fadeInUp 2s both 1.5s;
+                animation: fadeInUp 1s both 0.75s;
             }
             p {
-                animation: fadeInUp 2s both 2s;
+                animation: fadeInUp 1s both 1s;
             }
             .cr-last-buttons {
-                animation: fadeInUp 2s both 2.5s;
+                animation: fadeInUp 1s both 1.25s;
             }
         }
     }
