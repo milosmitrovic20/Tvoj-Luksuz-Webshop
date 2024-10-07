@@ -207,7 +207,7 @@ print_r($filteredProducts);
                         </div>
                     </div>
                     <div class="flex flex-wrap col-50 mb-[-24px]">
-                        <?php if ($productCount > 0): ?>
+                        <?php if ($productCount > 0): print_r($filteredProducts)?>
                             <?php foreach ($filteredProducts as $product): ?>
                                 <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
                                     <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
