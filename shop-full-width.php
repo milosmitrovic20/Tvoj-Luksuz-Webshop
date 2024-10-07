@@ -2,32 +2,44 @@
 // Include database connection
 include('db_connect.php');
 
-// Check if there's a search query in the URL
-$queryString = isset($_GET['query']) ? trim($_GET['query']) : '';
-
-// Base query to get all products
+// Query to get all products
 $query = "SELECT proizvodi.id_proizvoda, proizvodi.naziv, proizvodi.cena_bez_popusta, proizvodi.cena_sa_popustom, slike.url_slike
           FROM proizvodi
-          LEFT JOIN slike ON proizvodi.id_proizvoda = slike.id_proizvoda";
+          LEFT JOIN slike ON proizvodi.id_proizvoda = slike.id_proizvoda
+          GROUP BY proizvodi.id_proizvoda";  // Assuming you want one image per product
 
-// Modify query if a search term is provided
-if (!empty($queryString)) {
-    // Sanitize the input to prevent SQL injection
-    $queryString = $conn->real_escape_string($queryString);
-    $query .= " WHERE proizvodi.naziv LIKE '%$queryString%'";
-}
-
-// Execute the query
 $result = $conn->query($query);
 
-// Get total product count (filtered count if a search is applied)
-$productCount = $result->num_rows;
+// Get total product count
+$sql = "SELECT COUNT(*) AS total_products FROM proizvodi";
+$res = $conn->query($sql);
 
-// Get the total number of products for display purposes
-$totalQuery = "SELECT COUNT(*) AS total_products FROM proizvodi";
-$totalResult = $conn->query($totalQuery);
-$totalRow = $totalResult->fetch_assoc();
-$totalProducts = $totalRow['total_products'];
+// Fetch the total products result
+if ($res->num_rows > 0) {
+    $row = $res->fetch_assoc();
+}
+
+// Fetch all products into an array
+$products = [];
+if ($result->num_rows > 0) {
+    while ($product = $result->fetch_assoc()) {
+        $products[] = $product;
+    }
+}
+
+// Check if there's a search query
+$queryString = isset($_GET['query']) ? trim($_GET['query']) : '';
+$filteredProducts = $products; // Default to all products
+
+if ($queryString) {
+    // Filter products based on the search query
+    $filteredProducts = array_filter($products, function($product) use ($queryString) {
+        return stripos($product['naziv'], $queryString) !== false; // Case-insensitive search
+    });
+}
+
+// Display the filtered products count
+$productCount = count($filteredProducts);
 ?>
 
 <!DOCTYPE html>
@@ -195,7 +207,7 @@ $totalProducts = $totalRow['total_products'];
                     </div>
                     <div class="flex flex-wrap col-50 mb-[-24px]">
                         <?php if ($productCount > 0): ?>
-                            <?php while ($product = $result->fetch_assoc()): ?>
+                            <?php foreach ($filteredProducts as $product): ?>
                                 <div class="min-[992px]:w-[25%] w-[50%] max-[480px]:w-full px-[12px] cr-product-box mb-[24px]">
                                     <div class="cr-product-card h-full p-[12px] border-[1px] border-solid border-[#e9e9e9] bg-[#fff] rounded-[5px] overflow-hidden flex-col max-[480px]:w-full">
                                         <div class="cr-product-image rounded-[5px] flex items-center justify-center relative">
@@ -212,7 +224,7 @@ $totalProducts = $totalRow['total_products'];
                                         </div>
                                     </div>
                                 </div>
-                            <?php endwhile; ?>
+                            <?php endforeach; ?>
                         <?php else: ?>
                             <p class="px-[12px] font-Poppins text-[14px] leading-[1.875] text-[#7a7a7a]">Nema proizvoda koji odgovaraju pretrazi!</p>
                         <?php endif; ?>                             
