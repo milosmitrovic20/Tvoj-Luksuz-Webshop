@@ -207,7 +207,7 @@ $productCount = count($filteredProducts);
                     </div>
                     <div class="flex flex-wrap col-50 mb-[-24px]">
                     <?php 
-                    if ($productCount > 0): 
+                    if ($productCount == 0): 
                         print_r($filteredProducts);
                         echo "aiasjasi"; 
                     ?>
