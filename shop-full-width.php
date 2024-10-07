@@ -10,13 +10,36 @@ $query = "SELECT proizvodi.id_proizvoda, proizvodi.naziv, proizvodi.cena_bez_pop
 
 $result = $conn->query($query);
 
+// Get total product count
 $sql = "SELECT COUNT(*) AS total_products FROM proizvodi";
 $res = $conn->query($sql);
 
-// Fetch the result
+// Fetch the total products result
 if ($res->num_rows > 0) {
     $row = $res->fetch_assoc();
 }
+
+// Fetch all products into an array
+$products = [];
+if ($result->num_rows > 0) {
+    while ($product = $result->fetch_assoc()) {
+        $products[] = $product;
+    }
+}
+
+// Check if there's a search query
+$queryString = isset($_GET['query']) ? trim($_GET['query']) : '';
+$filteredProducts = $products; // Default to all products
+
+if ($queryString) {
+    // Filter products based on the search query
+    $filteredProducts = array_filter($products, function($product) use ($queryString) {
+        return stripos($product['naziv'], $queryString) !== false; // Case-insensitive search
+    });
+}
+
+// Display the filtered products count
+$productCount = count($filteredProducts);
 ?>
 
 <!DOCTYPE html>
