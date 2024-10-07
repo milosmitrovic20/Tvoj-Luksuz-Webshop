@@ -40,7 +40,6 @@ if ($queryString) {
 
 // Display the filtered products count
 $productCount = count($filteredProducts);
-print_r($filteredProducts);
 ?>
 
 <!DOCTYPE html>
