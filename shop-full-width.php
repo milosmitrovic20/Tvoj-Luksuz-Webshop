@@ -34,7 +34,7 @@ $filteredProducts = $products; // Default to all products
 function normalizeSerbianLatin($text) {
     // Mapping for common Latin to Serbian Latin characters
     $charMap = [
-        'č' => 'c', 'š' => 's', 'ž' => 'z', 'đ' => 'dj', 'đ' => 'd', 'ć' => 'c'
+        'c' => 'č', 's' => 'š', 'z' => 'ž', 'dj' => 'đ', 'd' => 'đ', 'c' => 'ć'
     ];
 
     // Replace the Latin characters with Serbian equivalents
