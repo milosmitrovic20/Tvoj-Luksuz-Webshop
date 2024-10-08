@@ -31,10 +31,29 @@ if ($result->num_rows > 0) {
 $queryString = isset($_GET['query']) ? trim($_GET['query']) : '';
 $filteredProducts = $products; // Default to all products
 
+function normalizeSerbianLatin($text) {
+    // Mapping for Latin to Serbian Latin characters
+    $charMap = [
+        'c' => 'č', 's' => 'š', 'z' => 'ž', 'dj' => 'đ', 'd' => 'đ', 'C' => 'Č', 'S' => 'Š', 'Z' => 'Ž', 'DJ' => 'Đ', 'D' => 'Đ'
+    ];
+
+    // Replace Latin characters with Serbian equivalents
+    // Important: Ensure replacements don't conflict, so use preg_replace for exact matches
+    foreach ($charMap as $latin => $serbian) {
+        $text = preg_replace('/\b' . preg_quote($latin, '/') . '\b/', $serbian, $text);
+    }
+
+    return $text;
+}
+
+// Example of usage in your existing code
 if ($queryString) {
-    // Filter products based on the search query
-    $filteredProducts = array_filter($products, function($product) use ($queryString) {
-        return stripos($product['naziv'], $queryString) !== false; // Case-insensitive search
+    // Normalize the query string
+    $normalizedQueryString = normalizeSerbianLatin($queryString);
+
+    // Filter products based on the normalized search query
+    $filteredProducts = array_filter($products, function($product) use ($normalizedQueryString) {
+        return stripos($product['naziv'], $normalizedQueryString) !== false; // Case-insensitive search
     });
 }
 
