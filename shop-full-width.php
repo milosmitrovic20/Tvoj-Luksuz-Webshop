@@ -27,13 +27,67 @@ if ($result->num_rows > 0) {
     }
 }
 
+// Function to generate all possible variations of a word
+function generateVariations($text) {
+    $charMap = [
+        'c' => ['c', 'č', 'ć'],
+        's' => ['s', 'š'],
+        'z' => ['z', 'ž'],
+        'dj' => ['dj', 'đ'],
+        'd' => ['d', 'đ']
+    ];
+
+    $variations = [''];
+
+    $length = strlen($text);
+    for ($i = 0; $i < $length; $i++) {
+        $char = $text[$i];
+        $nextTwoChars = substr($text, $i, 2);
+
+        // Handle 'dj' case
+        if ($nextTwoChars === 'dj' || $nextTwoChars === 'DJ') {
+            $newVariations = [];
+            foreach ($charMap['dj'] as $replacement) {
+                foreach ($variations as $variation) {
+                    $newVariations[] = $variation . $replacement;
+                }
+            }
+            $variations = $newVariations;
+            $i++; // Skip the next character since 'dj' is two characters
+            continue;
+        }
+
+        $replacements = isset($charMap[$char]) ? $charMap[$char] : [$char];
+        $newVariations = [];
+
+        foreach ($replacements as $replacement) {
+            foreach ($variations as $variation) {
+                $newVariations[] = $variation . $replacement;
+            }
+        }
+
+        $variations = $newVariations;
+    }
+
+    return $variations;
+}
+
 // Check if there's a search query
 $queryString = isset($_GET['query']) ? trim($_GET['query']) : '';
 $filteredProducts = $products; // Default to all products
 
 if ($queryString) {
-    $filteredProducts = array_filter($products, function($product) use ($queryString) {
-        return stripos($product['naziv'], $queryString) !== false; // Case-insensitive search
+    // Generate all variations of the query
+    $queryVariations = generateVariations($queryString);
+
+    // Filter products based on all variations of the query
+    $filteredProducts = array_filter($products, function($product) use ($queryVariations) {
+        foreach ($queryVariations as $variation) {
+            if (stripos($product['naziv'], $variation) !== false) {
+                return true; // Product matches at least one variation
+            }
+        }
+        return false; // No match found
     });
 }
 

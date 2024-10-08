@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'D': ['D', 'Đ']
         };
 
-        let variations = ['']; // Start with an empty array
+        let variations = [''];
 
         for (let i = 0; i < text.length; i++) {
             const char = text[i];
@@ -31,12 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 });
                 variations = newVariations;
-                i++; // Skip the next character since 'dj' is two characters
+                i++;
                 continue;
             }
 
-            // Handle single character replacements
-            const replacements = charMap[char] || [char]; // If no replacement, use the original char
+            const replacements = charMap[char] || [char];
             const newVariations = [];
 
             replacements.forEach(replacement => {
@@ -52,21 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     searchButton.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent default link behavior
+        event.preventDefault();
         let query = searchInput.value.trim();
 
         if (query) {
-            // Generate all possible variations of the search query
             const queryVariations = generateVariations(query);
 
-            // Now you have an array of all possible variations, for example:
-            // ['sofersajbna', 'šoferšajbna', 'šoferšajbna', 'soferšajbna', ...]
-
-            // Redirect to the shop page with one of the variations
-            // For example, sending the first variation:
+            // Redirect with the first variation in the URL
             window.location.href = `shop-full-width.php?query=${encodeURIComponent(queryVariations[0])}`;
-
-            // If you need to use multiple variations, you can handle it based on your backend logic.
         }
     });
 });
