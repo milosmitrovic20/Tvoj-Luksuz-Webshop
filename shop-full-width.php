@@ -32,15 +32,15 @@ $queryString = isset($_GET['query']) ? trim($_GET['query']) : '';
 $filteredProducts = $products; // Default to all products
 
 function normalizeSerbianLatin($text) {
-    // Mapping for common Latin to Serbian Latin characters
+    // Mapping for Latin to Serbian Latin characters
     $charMap = [
-        'c' => 'č', 's' => 'š', 'z' => 'ž', 'dj' => 'đ', 'd' => 'đ', 'c' => 'ć'
+        'c' => 'č', 's' => 'š', 'z' => 'ž', 'dj' => 'đ', 'd' => 'đ', 'C' => 'Č', 'S' => 'Š', 'Z' => 'Ž', 'DJ' => 'Đ', 'D' => 'Đ'
     ];
 
-    // Replace the Latin characters with Serbian equivalents
+    // Replace Latin characters with Serbian equivalents
+    // Important: Ensure replacements don't conflict, so use preg_replace for exact matches
     foreach ($charMap as $latin => $serbian) {
-        // Using str_ireplace for case-insensitive replacements
-        $text = str_ireplace($latin, $serbian, $text);
+        $text = preg_replace('/\b' . preg_quote($latin, '/') . '\b/', $serbian, $text);
     }
 
     return $text;
