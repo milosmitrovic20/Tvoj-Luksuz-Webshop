@@ -2,27 +2,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.querySelector('.search-input');
     const searchButton = document.getElementById('searchButton');
 
-    // Function to normalize search input for Serbian Latin characters
-    function normalizeSerbianLatin(text) {
+    // Function to generate all possible variations of a word with Serbian Latin replacements
+    function generateVariations(text) {
         const charMap = {
-            'dj': 'đ', // Handle 'dj' before 'd' to avoid interference
-            'c': 'č', 
-            's': 'š', 
-            'z': 'ž', 
-            'd': 'đ', 
-            'C': 'Č', 
-            'S': 'Š', 
-            'Z': 'Ž', 
-            'D': 'Đ',
-            'ć': 'ć' // Keeps 'ć' intact for real 'ć'
+            'c': ['c', 'č', 'ć'],
+            's': ['s', 'š'],
+            'z': ['z', 'ž'],
+            'dj': ['dj', 'đ'],
+            'd': ['d', 'đ'],
+            'C': ['C', 'Č', 'Ć'],
+            'S': ['S', 'Š'],
+            'Z': ['Z', 'Ž'],
+            'D': ['D', 'Đ']
         };
 
-        for (const [key, value] of Object.entries(charMap)) {
-            const regex = new RegExp(key, 'g');
-            text = text.replace(regex, value);
+        let variations = ['']; // Start with an empty array
+
+        for (let i = 0; i < text.length; i++) {
+            const char = text[i];
+            const nextTwoChars = text.slice(i, i + 2);
+
+            // Handle 'dj' as a special case
+            if (nextTwoChars === 'dj' || nextTwoChars === 'DJ') {
+                const newVariations = [];
+                charMap['dj'].forEach(replacement => {
+                    variations.forEach(variation => {
+                        newVariations.push(variation + replacement);
+                    });
+                });
+                variations = newVariations;
+                i++; // Skip the next character since 'dj' is two characters
+                continue;
+            }
+
+            // Handle single character replacements
+            const replacements = charMap[char] || [char]; // If no replacement, use the original char
+            const newVariations = [];
+
+            replacements.forEach(replacement => {
+                variations.forEach(variation => {
+                    newVariations.push(variation + replacement);
+                });
+            });
+
+            variations = newVariations;
         }
 
-        return text;
+        return variations;
     }
 
     searchButton.addEventListener('click', (event) => {
@@ -30,11 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
         let query = searchInput.value.trim();
 
         if (query) {
-            // Normalize the query before sending
-            query = normalizeSerbianLatin(query);
+            // Generate all possible variations of the search query
+            const queryVariations = generateVariations(query);
 
-            // Redirect to the shop page with the normalized query parameter
-            window.location.href = `shop-full-width.php?query=${encodeURIComponent(query)}`;
+            // Now you have an array of all possible variations, for example:
+            // ['sofersajbna', 'šoferšajbna', 'šoferšajbna', 'soferšajbna', ...]
+
+            // Redirect to the shop page with one of the variations
+            // For example, sending the first variation:
+            window.location.href = `shop-full-width.php?query=${encodeURIComponent(queryVariations[0])}`;
+
+            // If you need to use multiple variations, you can handle it based on your backend logic.
         }
     });
 });
