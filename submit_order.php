@@ -29,8 +29,8 @@ try {
         $ukupnaCena += $item['price'] * $item['quantity'];
     }
 
-    // Determine the shipping cost: free if total price is more than 4500 RSD
-    if ($ukupnaCena > 4500) {
+    // Determine the shipping cost: free if total price is more than 2500 RSD
+    if ($ukupnaCena > 2500) {
         $cenaDostave = 0;  // Free shipping
     } else {
         $cenaDostave = 300; // Standard shipping cost

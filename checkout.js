@@ -16,10 +16,10 @@ const calculateTotalPrice = () => {
     const totalPriceWithShippingElement = document.querySelector('.cr-checkout-summary-total span.text-right');
 
     // Display the total price in the specified element
-    totalPriceWithShippingElement.textContent = `${totalPrice > 4500 ? totalPrice : totalPrice + 300} RSD`;
+    totalPriceWithShippingElement.textContent = `${totalPrice > 2500 ? totalPrice : totalPrice + 300} RSD`;
 
     const deliveryPriceElement = document.querySelector('.cr-checkout-summary .delivery-price');
-    deliveryPriceElement.textContent = `${totalPrice > 4500 ? "Besplatno": 300 + " RSD"}`;
+    deliveryPriceElement.textContent = `${totalPrice > 2500 ? "Besplatno": 300 + " RSD"}`;
 };
 
 // Call the function to update the total price
