@@ -78,28 +78,36 @@ try {
     $conn->commit();
 
     // Generate the order summary HTML for email
-    $orderDetails = "<h2>Detalji porudžbine:</h2>";
-    $orderDetails .= "<p>Ime: {$data['first_name']} {$data['last_name']}</p>";
-    $orderDetails .= "<p>Adresa: {$data['address']}, {$data['city']}, {$data['zip_code']}</p>";
-    $orderDetails .= "<p>Telefon: {$data['phone']}</p>";
-    $orderDetails .= "<table border='1' cellpadding='10' cellspacing='0'>";
-    $orderDetails .= "<thead><tr><th>Proizvod</th><th>Količina</th><th>Cena</th><th>Ukupno</th></tr></thead>";
-    $orderDetails .= "<tbody>";
+    $orderDetails = "<h2 style='color: #333;'>Detalji porudžbine:</h2>";
+    $orderDetails .= "<p><strong>Ime:</strong> {$data['first_name']} {$data['last_name']}</p>";
+    $orderDetails .= "<p><strong>Adresa:</strong> {$data['address']}, {$data['city']}, {$data['zip_code']}</p>";
+    $orderDetails .= "<p><strong>Telefon:</strong> {$data['phone']}</p>";
 
+    $orderDetails .= "<table border='1' cellpadding='10' cellspacing='0' style='width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;'>";
+    $orderDetails .= "<thead style='background-color: #f2f2f2;'>";
+    $orderDetails .= "<tr style='color: #fff; background-color: #4CAF50; text-align: left;'>";
+    $orderDetails .= "<th style='border: 1px solid #ddd; padding: 8px;'>Proizvod</th>";
+    $orderDetails .= "<th style='border: 1px solid #ddd; padding: 8px;'>Količina</th>";
+    $orderDetails .= "<th style='border: 1px solid #ddd; padding: 8px;'>Cena</th>";
+    $orderDetails .= "<th style='border: 1px solid #ddd; padding: 8px;'>Ukupno</th>";
+    $orderDetails .= "</tr></thead>";
+
+    $orderDetails .= "<tbody>";
     foreach ($data['cartItems'] as $item) {
         $itemTotal = $item['price'] * $item['quantity'];
-        $orderDetails .= "<tr>
-                            <td>{$item['name']}</td>
-                            <td>{$item['quantity']}</td>
-                            <td>{$item['price']} RSD</td>
-                            <td>{$itemTotal} RSD</td>
-                          </tr>";
+        $orderDetails .= "<tr style='background-color: #f9f9f9;'>";
+        $orderDetails .= "<td style='border: 1px solid #ddd; padding: 8px;'>{$item['name']}</td>";
+        $orderDetails .= "<td style='border: 1px solid #ddd; padding: 8px;'>{$item['quantity']}</td>";
+        $orderDetails .= "<td style='border: 1px solid #ddd; padding: 8px;'>{$item['price']} RSD</td>";
+        $orderDetails .= "<td style='border: 1px solid #ddd; padding: 8px;'>{$itemTotal} RSD</td>";
+        $orderDetails .= "</tr>";
     }
-
     $orderDetails .= "</tbody></table>";
-    $orderDetails .= "<p><strong>Ukupna cena proizvoda:</strong> {$ukupnaCena} RSD</p>";
-    $orderDetails .= "<p><strong>Cena dostave:</strong> {$cenaDostave} RSD</p>";
-    $orderDetails .= "<p><strong>Ukupno za naplatu:</strong> " . ($ukupnaCena + $cenaDostave) . " RSD</p>";
+
+    $orderDetails .= "<p style='font-size: 16px;'><strong>Ukupna cena proizvoda:</strong> {$ukupnaCena} RSD</p>";
+    $orderDetails .= "<p style='font-size: 16px;'><strong>Cena dostave:</strong> {$cenaDostave} RSD</p>";
+    $orderDetails .= "<p style='font-size: 18px; font-weight: bold;'><strong>Ukupno za naplatu:</strong> " . ($ukupnaCena + $cenaDostave) . " RSD</p>";
+
 
     // Send confirmation email
     $mail = new PHPMailer(true);

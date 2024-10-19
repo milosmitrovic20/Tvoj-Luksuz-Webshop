@@ -45,7 +45,7 @@ const updateCartQuantity = (productId, newQuantity) => {
 };
 
 // Function to calculate the total cart price
-const calculateTotalPrice = () => {
+const calculateTotalPrice = () => { 
     let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     let totalPrice = 0;
 
@@ -54,9 +54,20 @@ const calculateTotalPrice = () => {
         totalPrice += item.price * item.quantity;
     });
 
-    // Display the total price (assuming you have an element for total price)
-    document.querySelector('#total-price').textContent = `${totalPrice} RSD`;
+    // Update the total price displayed in the table
+    const totalPriceElement = document.getElementById('total-price');
+    totalPriceElement.textContent = `${totalPrice} RSD`;
+
+    // Update delivery cost and total price with shipping if applicable
+    const deliveryPriceElement = document.querySelector('.cr-checkout-summary .delivery-price');
+    deliveryPriceElement.textContent = `${totalPrice > 2500 ? "Besplatno": 300 + " RSD"}`;
+
+    const totalPriceWithShippingElement = document.querySelector('.cr-checkout-summary-total span.text-right');
+    totalPriceWithShippingElement.textContent = `${totalPrice > 2500 ? totalPrice : totalPrice + 300} RSD`;
 };
+
+// Call the function to update the total price whenever the page loads or cart items change
+calculateTotalPrice();
 
 // Event listener for updating quantity via input or buttons
 const setupQuantityHandlers = () => {
@@ -162,3 +173,24 @@ const displayCartProducts = () => {
 
 // Call the function to display the cart products
 displayCartProducts();
+
+// Listen for changes in quantity inputs
+document.querySelectorAll('.quantity-input').forEach(input => {
+    input.addEventListener('change', (event) => {
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const productId = event.target.dataset.productId; // Assume each input has a data-product-id attribute
+
+        // Update the quantity in localStorage
+        cartItems.forEach(item => {
+            if (item.id === productId) {
+                item.quantity = parseInt(event.target.value);
+            }
+        });
+
+        // Save updated cart back to localStorage
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+
+        // Recalculate total price
+        calculateTotalPrice();
+    });
+});
