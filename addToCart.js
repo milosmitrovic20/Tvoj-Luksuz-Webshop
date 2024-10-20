@@ -42,7 +42,7 @@ const showAddToCartPopup = (productName) => {
     const productNameElement = document.getElementById('popup-product-name');
 
     // Update the product name in the popup
-    productNameElement.textContent = `${productName} has been added to your cart!`;
+    productNameElement.textContent = `${productName} je dodat u korpu!`;
 
     // Show the popup
     popup.classList.remove('hidden');

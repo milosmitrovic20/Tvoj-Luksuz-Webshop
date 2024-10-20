@@ -286,12 +286,12 @@ while ($row = $result->fetch_assoc()) {
     </section>
 
     <!-- Custom Add to Cart Popup -->
-    <div id="add-to-cart-popup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
+    <div id="add-to-cart-popup" class="z-[9999] fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
         <div class="bg-white rounded-lg shadow-lg p-6 w-[300px] text-center">
-            <h2 class="text-xl font-bold text-[#64b496] mb-2">Product Added!</h2>
+            <h2 class="text-xl font-bold text-[#64b496] mb-2">Proizvod dodat!</h2>
             <p id="popup-product-name" class="text-[#444] text-[14px] mb-4"></p>
-            <a href="cart.html" class="bg-[#64b496] text-white px-4 py-2 rounded hover:bg-[#000] hover:text-white transition">Go to Cart</a>
-            <button id="close-popup" class="text-[#64b496] mt-4 underline hover:text-[#000] transition">Continue Shopping</button>
+            <a href="cart.html" class="bg-[#64b496] text-white px-4 py-2 rounded hover:bg-[#000] hover:text-white transition">Idi na plaćanje</a>
+            <button id="close-popup" class="text-[#64b496] mt-4 underline hover:text-[#000] transition">Nastavi kupovinu</button>
         </div>
     </div>
 
