@@ -57,9 +57,6 @@ const calculateTotalPrice = () => {
     // Update the total price displayed in the table
     const totalPriceElement = document.getElementById('total-price');
     totalPriceElement.textContent = `${totalPrice} RSD`;
-
-    const totalPriceWithShippingElement = document.querySelector('.cr-checkout-summary-total span.text-right');
-    totalPriceWithShippingElement.textContent = `${totalPrice > 2500 ? totalPrice : totalPrice + 300} RSD`;
 };
 
 // Call the function to update the total price whenever the page loads or cart items change
