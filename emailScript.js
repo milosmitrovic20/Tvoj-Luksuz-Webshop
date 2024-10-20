@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitBtn.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the default action of the <a> tag
-        
+
         const emailInput = document.getElementById('email').value;
 
         if (!validateEmail(emailInput)) {
-            alert('Please enter a valid email address.');
+            showEmailPopup('Invalid Email', 'Please enter a valid email address.');
             return;
         }
 
@@ -23,15 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Email successfully submitted.');
+                showEmailPopup('Success', 'Email successfully submitted.');
                 emailForm.reset();
             } else {
-                alert('Error: ' + data.error);
+                showEmailPopup('Error', 'Error: ' + data.error);
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('There was an error submitting your email.');
+            showEmailPopup('Error', 'There was an error submitting your email.');
         });
     });
 
@@ -39,5 +39,26 @@ document.addEventListener('DOMContentLoaded', () => {
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
+    }
+
+    // Function to show the custom popup
+    function showEmailPopup(title, message) {
+        const popup = document.getElementById('email-popup');
+        const popupTitle = document.getElementById('popup-title');
+        const popupMessage = document.getElementById('popup-message');
+        const closePopupButton = document.getElementById('close-email-popup');
+
+        popupTitle.textContent = title;
+        popupMessage.textContent = message;
+        popup.classList.remove('hidden'); // Show the popup
+
+        closePopupButton.addEventListener('click', () => {
+            popup.classList.add('hidden'); // Hide the popup when 'Close' is clicked
+        });
+
+        // Auto-hide the popup after 3 seconds
+        setTimeout(() => {
+            popup.classList.add('hidden');
+        }, 3000);
     }
 });
