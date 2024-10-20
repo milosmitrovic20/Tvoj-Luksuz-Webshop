@@ -285,6 +285,16 @@ while ($row = $result->fetch_assoc()) {
         </div>
     </section>
 
+    <!-- Custom Add to Cart Popup -->
+    <div id="add-to-cart-popup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-[300px] text-center">
+            <h2 class="text-xl font-bold text-[#64b496] mb-2">Product Added!</h2>
+            <p id="popup-product-name" class="text-[#444] text-[14px] mb-4"></p>
+            <a href="cart.html" class="bg-[#64b496] text-white px-4 py-2 rounded hover:bg-[#000] hover:text-white transition">Go to Cart</a>
+            <button id="close-popup" class="text-[#64b496] mt-4 underline hover:text-[#000] transition">Continue Shopping</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer pt-[100px] max-[1199px]:pt-[70px] bg-off-white bg-[#f7f7f8] relative border-t-[1px] border-solid border-[#e9e9e9]">
         <div class="footer-container flex flex-wrap justify-between relative items-center mx-auto min-[1600px]:max-w-[1500px] min-[1400px]:max-w-[1320px] min-[1200px]:max-w-[1140px] min-[992px]:max-w-[960px] min-[768px]:max-w-[720px] min-[576px]:max-w-[540px]">

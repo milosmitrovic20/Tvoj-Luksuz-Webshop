@@ -36,6 +36,23 @@ const displayCart = () => {
     console.log('Cart:', cart); // You can replace this with actual DOM manipulation to show the cart
 };
 
+// Function to display the custom Add to Cart popup
+const showAddToCartPopup = (productName) => {
+    const popup = document.getElementById('add-to-cart-popup');
+    const productNameElement = document.getElementById('popup-product-name');
+
+    // Update the product name in the popup
+    productNameElement.textContent = `${productName} has been added to your cart!`;
+
+    // Show the popup
+    popup.classList.remove('hidden');
+
+    // Close the popup when clicking "Continue Shopping"
+    document.getElementById('close-popup').addEventListener('click', () => {
+        popup.classList.add('hidden');
+    });
+};
+
 // Function to attach event listeners to "Add to Cart" buttons
 const initAddToCartButtons = () => {
     const addToCartButtons = document.querySelectorAll('.add-to-cart'); // Assumes a class on each "Add to Cart" button
@@ -56,7 +73,9 @@ const initAddToCartButtons = () => {
             }
 
             addToCart(productId, productName, productPrice, productImage, productQuantity);
-            alert(`${productName} added to cart with quantity ${productQuantity}`);
+            
+            // Show the custom popup instead of alert
+            showAddToCartPopup(productName);
         });
     });
 };
