@@ -58,10 +58,6 @@ const calculateTotalPrice = () => {
     const totalPriceElement = document.getElementById('total-price');
     totalPriceElement.textContent = `${totalPrice} RSD`;
 
-    // Update delivery cost and total price with shipping if applicable
-    const deliveryPriceElement = document.querySelector('.cr-checkout-summary .delivery-price');
-    deliveryPriceElement.textContent = `${totalPrice > 2500 ? "Besplatno": 300 + " RSD"}`;
-
     const totalPriceWithShippingElement = document.querySelector('.cr-checkout-summary-total span.text-right');
     totalPriceWithShippingElement.textContent = `${totalPrice > 2500 ? totalPrice : totalPrice + 300} RSD`;
 };
