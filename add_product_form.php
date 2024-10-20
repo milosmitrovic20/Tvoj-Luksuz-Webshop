@@ -38,6 +38,21 @@
             </div>
 
             <div class="mb-4">
+                <label for="dimensions" class="block text-sm font-medium text-gray-700">Dimenzije</label>
+                <input type="text" id="dimensions" name="dimensions" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="color" class="block text-sm font-medium text-gray-700">Boja</label>
+                <input type="text" id="color" name="color" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="material" class="block text-sm font-medium text-gray-700">Materijal</label>
+                <input type="text" id="material" name="material" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
+            </div>
+
+            <div class="mb-4">
                 <label for="product_images" class="block text-sm font-medium text-gray-700">Slike</label>
                 <input type="file" name="product_images[]" id="product_images" multiple class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" required>
             </div>           
