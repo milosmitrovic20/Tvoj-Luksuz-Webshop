@@ -27,7 +27,10 @@ while ($row = $result->fetch_assoc()) {
             'price' => $row['cena_bez_popusta'],
             'discounted_price' => $row['cena_sa_popustom'],
             'short_description' => $row['kratki_opis'],
-            'description' => $row['opis']
+            'description' => $row['opis'],
+            'dimensions' => $row['spec1'],
+            'color' => $row['spec2'],
+            'material' => $row['spec3'],
         ];
     }
     // Store each image
@@ -210,10 +213,9 @@ while ($row = $result->fetch_assoc()) {
                     <div class="cr-size-and-weight pt-[20px]">
                         <div class="list">
                             <ul class="mt-[15px] p-[0] mb-[1rem]">
-                                <li class="py-[5px] text-[#777] flex"><label class="min-w-[100px] mr-[10px] text-[#2b2b2d] font-semibold flex justify-between">Dimenzije <span>:</span></label>135 x 75 cm</li>
-                                <li class="py-[5px] text-[#777] flex"><label class="min-w-[100px] mr-[10px] text-[#2b2b2d] font-semibold flex justify-between">Boja zadnje strane <span>:</span></label>Crna</li>
-                                <li class="py-[5px] text-[#777] flex"><label class="min-w-[100px] mr-[10px] text-[#2b2b2d] font-semibold flex justify-between">Boja prednje strane <span>:</span></label>Srebrna</li>
-                                <li class="py-[5px] text-[#777] flex"><label class="min-w-[100px] mr-[10px] text-[#2b2b2d] font-semibold flex justify-between">Materijal <span>:</span></label>Metal i izdržljivo platno</li>
+                                <li class="py-[5px] text-[#777] flex"><label class="min-w-[100px] mr-[10px] text-[#2b2b2d] font-semibold flex justify-between">Dimenzije <span>:</span></label><?php echo $product['dimensions']; ?></li>
+                                <li class="py-[5px] text-[#777] flex"><label class="min-w-[100px] mr-[10px] text-[#2b2b2d] font-semibold flex justify-between">Boja<span>:</span></label><?php echo $product['color']; ?></li>
+                                <li class="py-[5px] text-[#777] flex"><label class="min-w-[100px] mr-[10px] text-[#2b2b2d] font-semibold flex justify-between">Materijal <span>:</span></label><?php echo $product['material']; ?></li>
                             </ul>
                         </div>
                         <div class="cr-product-price pt-[20px]">
