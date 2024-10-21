@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailInput = document.getElementById('email').value;
 
         if (!validateEmail(emailInput)) {
-            showEmailPopup('Invalid Email', 'Please enter a valid email address.');
+            showEmailPopup('Neispravan mejl', 'Unesi pravilnu mejl adresu.');
             return;
         }
 
@@ -23,15 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                showEmailPopup('Success', 'Email successfully submitted.');
+                showEmailPopup('Uspešno', 'Vaša mejl adresa je uspešno zabeležena. Očekujte obaveštenja o popustima i posebnim pogodnostima!');
                 emailForm.reset();
             } else {
-                showEmailPopup('Error', 'Error: ' + data.error);
+                showEmailPopup('Greška', 'Greška: ' + data.error);
             }
         })
         .catch(error => {
-            console.error('Error:', error);
-            showEmailPopup('Error', 'There was an error submitting your email.');
+            console.error('Greška:', error);
+            showEmailPopup('Greška', 'Greška prilikom upisivanja mejl adrese.');
         });
     });
 
