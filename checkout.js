@@ -100,13 +100,29 @@ document.querySelector('.cr-check-order-btn').addEventListener('click', async (e
         const result = await response.json();
 
         if (result.success) {
-            document.getElementById('success-message').style.display = 'block';
+            showOrderPopup('Hvala na porudžbini!', 'Vaša porudžbina je uspešno zabeležena. Uskoro ćete dobiti potvrdu poružbine na mejl adresi.');
             // Clear the cart from localStorage after successful submission
             localStorage.removeItem('cart');
         } else {
             console.error(result.error);
         }
     } catch (error) {
-        console.error('Error sending the order:', error);
+        console.error('Greška prilikom naručivanja:', error);
+    }
+
+    // Function to show the custom popup
+    function showOrderPopup(title, message) {
+        const popup = document.getElementById('order-popup');
+        const popupTitle = document.getElementById('popup-title2');
+        const popupMessage = document.getElementById('popup-message2');
+        const closePopupButton = document.getElementById('close-order-popup');
+
+        popupTitle.textContent = title;
+        popupMessage.textContent = message;
+        popup.classList.remove('hidden'); // Show the popup
+
+        closePopupButton.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
     }
 });

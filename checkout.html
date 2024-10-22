@@ -205,8 +205,6 @@
                                                     <input type="text" name="email" placeholder="Unesi mejl adresu" class="h-[50px] bg-transparent border-[1px] border-solid border-[#e9e9e9] text-[#2b2b2d] text-[14px] mb-[26px] px-[15px] w-full outline-[0] rounded-[5px]" required>
                                                 </span>
                                             </form>
-
-                                            <div id="success-message" style="display:none;">Porudžbina uspešno poslata!</div>
                                         </div>
                                     </div>
                                 </div>
@@ -220,6 +218,15 @@
             </div>
         </div>
     </section>
+
+    <!-- Custom Popup for orders -->
+    <div id="order-popup" class="popup fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.7)] z-[9999] hidden">
+        <div class="popup-content bg-white p-6 rounded-[10px] shadow-lg w-[300px] text-center relative">
+            <h3 id="popup-title2" class="text-[20px] font-bold mb-[10px]"></h3>
+            <p id="popup-message2" class="text-[16px]"></p>
+            <button id="close-order-popup" class="mt-[20px] py-[8px] px-[20px] bg-[#64b496] text-white rounded-[5px] hover:bg-[#000] transition-all">Zatvori</button>
+        </div>
+    </div>
 
     <!-- Custom Popup for notifications -->
     <div id="email-popup" class="popup fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.7)] z-[9999] hidden">
